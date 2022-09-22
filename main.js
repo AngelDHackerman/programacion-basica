@@ -1,5 +1,5 @@
 
-let a = 5
-let b = 235
+let nombre = "";
+nombre = prompt("Cual es tu nombre? ");
 
-alert("El valor de a + b es: " (a + b ))
+alert("Bienvenida/o " + nombre)
