@@ -42,3 +42,4 @@ if ( pc == jugador ) {
 } else { 
   alert("PERDISTE :( ")
 }
+
