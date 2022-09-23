@@ -6,9 +6,7 @@ const random = (min, max) => {
 }
 
 let jugador = 0;
-let min = 1
-let max = 3
-let pc = random(min, max);  
+let pc = random(1, 3);  
 
 jugador = prompt("Elige: 1 para piedra, 2 para papel, 3 para tijera")
 // alert(`Elegiste: ${jugador}`)
