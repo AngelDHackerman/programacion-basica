@@ -77,13 +77,24 @@ const ataqueTierra = () => {
 const ataqueAleatorioEnemigo = () => { 
   let ataqueAleatorio = aleatorio(1,3)
 
-  if ( ataque == 1 ) { 
+  if ( ataqueAleatorio == 1 ) { 
     ataqueEnemigo = 'FUEGO'
-  } else if ( ataque == 2 ) { 
+  } else if ( ataqueAleatorio == 2 ) { 
     ataqueEnemigo = 'AGUA'
   } else { 
     ataqueEnemigo = 'TIERRA'
   }
+
+  crearMensaje()
+}
+
+// Mostrando los ataques seleccionados en pantalla
+
+const crearMensaje = () => { 
+  let sectionMensajes = document.getElementById('mensajes')
+  let parrafo = document.createElement('p')
+  parrafo.innerHTML = (`Tu mascota ataco con ${ataqueJugador}, la mascota del enemigo con ${ataqueEnemigo} - PENDIENTE.`)
+  sectionMensajes.appendChild(parrafo)
 }
 
 // Funcion para la aleatoriedad
