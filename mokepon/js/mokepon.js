@@ -85,15 +85,35 @@ const ataqueAleatorioEnemigo = () => {
     ataqueEnemigo = 'TIERRA'
   }
 
-  crearMensaje()
+  combate()
+}
+
+// Combate entre mascotas
+
+const combate = () => {
+  let resultado
+
+  if ( ataqueEnemigo == ataqueJugador ) { 
+    resultado = 'EMPATE 😐' 
+  } else if ( ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') { 
+    resultado = 'GANASTE! 🥳'
+  } else if ( ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO') {
+    resultado = 'GANASTE! 🥳' 
+  } else if ( ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA') { 
+    resultado = 'GANASTE! 🥳'
+  } else {
+    resultado = 'PERDISTE 😞'
+  }
+
+  crearMensaje(resultado)
 }
 
 // Mostrando los ataques seleccionados en pantalla
 
-const crearMensaje = () => { 
+const crearMensaje = (resultado) => { 
   let sectionMensajes = document.getElementById('mensajes')
   let parrafo = document.createElement('p')
-  parrafo.innerHTML = (`Tu mascota ataco con ${ataqueJugador}, la mascota del enemigo con ${ataqueEnemigo} - PENDIENTE.`)
+  parrafo.innerHTML = (`Tu mascota ataco con ${ataqueJugador}, la mascota del enemigo con ${ataqueEnemigo} - ${resultado}.`)
   sectionMensajes.appendChild(parrafo)
 }
 
