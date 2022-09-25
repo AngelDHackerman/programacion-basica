@@ -4,25 +4,26 @@ const iniciarJuego = () => {
 
   const selectionarMascotaJugador = () => { 
 
-    const seleccionado = (mascota) => { 
-      return document.getElementById(mascota).checked
-    }
+    let inputHipodoge = document.getElementById('hipodoge')
+    let inputCapipepo = document.getElementById('capipepo')
+    let inputRatigueya = document.getElementById('ratigueya')
+    let spanMascotaJugador = document.getElementById('mascota-jugador')
 
-    if ( seleccionado('hipodoge') ) { 
-      alert('Selectionaste a Hipodoge !')
-    } else if ( seleccionado('capipepo') ) {
-      alert('Seleccionaste a Capipepo')
-    } else if ( seleccionado('ratigueya') ) { 
-      alert('Seleccionaste a Ratiguyeya')
+
+    if ( inputHipodoge.checked ) { 
+      spanMascotaJugador.innerHTML = "Hipodoge"
+    } else if ( inputCapipepo.checked ) {
+      spanMascotaJugador.innerHTML = "Capipepo"
+    } else if ( inputRatigueya.checked ) { 
+      spanMascotaJugador.innerHTML = "Ratigueya"
     } else {
-      alert('No has selecionado nada !!!')
+      alert('Selecciona una mascota para poder continuar! 🙃')
     }
   }
 
 
   let botonMascotaJugador = document.getElementById('boton-mascota');
   botonMascotaJugador.addEventListener('click', selectionarMascotaJugador);
-
 
 
 }
