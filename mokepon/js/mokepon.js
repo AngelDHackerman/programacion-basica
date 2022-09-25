@@ -1,5 +1,6 @@
 
 let ataqueJugador 
+let ataqueEnemigo
 
 const iniciarJuego = () => { 
 
@@ -41,30 +42,51 @@ const seleccionarMascotaJugador = () => {
 // Seleccionando la mascota del enemigo
 
 const seleccionarMascotaEnemigo = () => { 
-  let ataqueAleatorio = aleatorio(1, 3)
+  let mascotaAleatorio = aleatorio(1, 3)
   let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
 
-  if ( ataqueAleatorio == 1 ) { 
+  if ( mascotaAleatorio == 1 ) { 
     spanMascotaEnemigo.innerHTML = 'Hipodoge'
-  } else if ( ataqueAleatorio == 2 ) { 
+  } else if ( mascotaAleatorio == 2 ) { 
     spanMascotaEnemigo.innerHTML = 'Capipepo'
   } else {
     spanMascotaEnemigo.innerHTML = 'Ratigueya'
   }
 }
 
+// Seleccionando el Ataque del usuario
+
 const ataqueFuego = () => {
   ataqueJugador = 'FUEGO'
-  alert(ataqueJugador)
+  ataqueAleatorioEnemigo()
 }
 
 const ataqueAgua = () => {
   ataqueJugador = 'AGUA'
+  ataqueAleatorioEnemigo()
+
 }
 
 const ataqueTierra = () => {
   ataqueJugador = 'TIERRA'
+  ataqueAleatorioEnemigo()
 }
+
+// Seleccionando aleatoriamente el Ataque del enemigo
+
+const ataqueAleatorioEnemigo = () => { 
+  let ataqueAleatorio = aleatorio(1,3)
+
+  if ( ataque == 1 ) { 
+    ataqueEnemigo = 'FUEGO'
+  } else if ( ataque == 2 ) { 
+    ataqueEnemigo = 'AGUA'
+  } else { 
+    ataqueEnemigo = 'TIERRA'
+  }
+}
+
+// Funcion para la aleatoriedad
 
 const aleatorio = (min, max) => { 
   return Math.floor(Math.random() * (max - min + 1) + min)
