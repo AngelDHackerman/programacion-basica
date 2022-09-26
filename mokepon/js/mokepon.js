@@ -116,16 +116,37 @@ const combate = () => {
     vidasJugador--  // Este le resta -1 a las vidas
     spanVidasJugador.innerHTML = vidasJugador
   }
-
+  
   crearMensaje(resultado)
+  
+  revisarVidas()
 }
 
-// Mostrando los ataques seleccionados en pantalla
+// Revisar las vidas de los jugadores y enviar el mensaje final. 
+
+const revisarVidas = () => { 
+  if ( vidasEnemigo == 0 ) {
+    crearMensajeFinal('FELICITACIONES !!! Ganaste 🥳🥳🥳')
+  } else if ( vidasJugador == 0 ) { 
+    crearMensajeFinal('Lo sentimos pero perdiste 😞😞😞')
+  }
+}
+
+// Mostrando los ataques y resultados seleccionados en pantalla
 
 const crearMensaje = (resultado) => { 
   let sectionMensajes = document.getElementById('mensajes')
   let parrafo = document.createElement('p')
   parrafo.innerHTML = (`Tu mascota ataco con ${ataqueJugador}, la mascota del enemigo con ${ataqueEnemigo} - ${resultado}.`)
+  sectionMensajes.appendChild(parrafo)
+}
+
+const crearMensajeFinal = (resultadoFinal) => { 
+  let sectionMensajes = document.getElementById('mensajes')
+
+  let parrafo = document.createElement('p')
+  parrafo.innerHTML = resultadoFinal
+  
   sectionMensajes.appendChild(parrafo)
 }
 
