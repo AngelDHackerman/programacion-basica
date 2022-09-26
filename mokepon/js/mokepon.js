@@ -1,6 +1,8 @@
 
 let ataqueJugador 
 let ataqueEnemigo
+let vidasJugador = 3
+let vidasEnemigo = 3
 
 const iniciarJuego = () => { 
 
@@ -92,17 +94,27 @@ const ataqueAleatorioEnemigo = () => {
 
 const combate = () => {
   let resultado
+  let spanVidasJugador = document.getElementById('vidas-jugador')
+  let spanVidasEnemigo = document.getElementById('vidas-enemigo')
 
   if ( ataqueEnemigo == ataqueJugador ) { 
     resultado = 'EMPATE 😐' 
   } else if ( ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') { 
     resultado = 'GANASTE! 🥳'
+    vidasEnemigo--
+    spanVidasEnemigo.innerHTML = vidasEnemigo
   } else if ( ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO') {
     resultado = 'GANASTE! 🥳' 
+    vidasEnemigo--
+    spanVidasEnemigo.innerHTML = vidasEnemigo
   } else if ( ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA') { 
     resultado = 'GANASTE! 🥳'
+    vidasEnemigo--
+    spanVidasEnemigo.innerHTML = vidasEnemigo
   } else {
     resultado = 'PERDISTE 😞'
+    vidasJugador--  // Este le resta -1 a las vidas
+    spanVidasJugador.innerHTML = vidasJugador
   }
 
   crearMensaje(resultado)
