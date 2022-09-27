@@ -9,6 +9,7 @@ let botonFuego = document.getElementById('boton-fuego')
 let botonAgua = document.getElementById('boton-agua')
 let botonTierra = document.getElementById('boton-tierra')
 
+let seccionMascota = document.getElementById('seleccionar-mascota')
 let seccionAtaque = document.getElementById('seleccionar-ataque')
 let botonReiniciar = document.getElementById('boton-reiniciar')
 
@@ -38,18 +39,23 @@ const seleccionarMascotaJugador = () => {
 
   if ( inputHipodoge.checked ) { 
     spanMascotaJugador.innerHTML = "Hipodoge"
-    seccionAtaque.style.display = ''
+    ocultarSeccionMascotas()  
   } else if ( inputCapipepo.checked ) {
     spanMascotaJugador.innerHTML = "Capipepo"
-    seccionAtaque.style.display = ''
+    ocultarSeccionMascotas()  
   } else if ( inputRatigueya.checked ) { 
     spanMascotaJugador.innerHTML = "Ratigueya"
-    seccionAtaque.style.display = ''
+    ocultarSeccionMascotas()  
   } else {
     alert('Selecciona una mascota para poder continuar! 🙃')
   }
 
   seleccionarMascotaEnemigo()
+}
+
+const ocultarSeccionMascotas = () => {
+  seccionMascota.style.display = 'none'
+  seccionAtaque.style.display = ''
 }
 
 
