@@ -15,6 +15,9 @@ const iniciarJuego = () => {
   botonAgua.addEventListener('click', ataqueAgua)
   let botonTierra = document.getElementById('boton-tierra')
   botonTierra.addEventListener('click', ataqueTierra)
+
+  let botonReiniciar = document.getElementById('boton-reiniciar')
+  botonReiniciar.addEventListener('click', reiniciarJuego)
 }
 
 // Seleccionando la mascota del jugador
@@ -127,7 +130,7 @@ const combate = () => {
 const revisarVidas = () => { 
   if ( vidasEnemigo == 0 ) {
     crearMensajeFinal('FELICITACIONES !!! Ganaste 🥳🥳🥳')
-  } else if ( vidasJugador == 0 ) { 
+  } else if ( vidasJugador >= 0 ) { 
     crearMensajeFinal('Lo sentimos pero perdiste 😞😞😞')
   }
 }
@@ -148,6 +151,12 @@ const crearMensajeFinal = (resultadoFinal) => {
   parrafo.innerHTML = resultadoFinal
   
   sectionMensajes.appendChild(parrafo)
+}
+
+// Reiniciar el juego 
+
+const reiniciarJuego = () => { 
+  window.location.reload()
 }
 
 // Funcion para la aleatoriedad
