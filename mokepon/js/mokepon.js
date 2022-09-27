@@ -4,16 +4,18 @@ let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 
+let botonFuego = document.getElementById('boton-fuego')
+let botonAgua = document.getElementById('boton-agua')
+let botonTierra = document.getElementById('boton-tierra')
+
+
 const iniciarJuego = () => { 
 
   let botonMascotaJugador = document.getElementById('boton-mascota');
   botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador);
 
-  let botonFuego = document.getElementById('boton-fuego')
   botonFuego.addEventListener('click', ataqueFuego)
-  let botonAgua = document.getElementById('boton-agua')
   botonAgua.addEventListener('click', ataqueAgua)
-  let botonTierra = document.getElementById('boton-tierra')
   botonTierra.addEventListener('click', ataqueTierra)
 
   let botonReiniciar = document.getElementById('boton-reiniciar')
@@ -130,9 +132,11 @@ const combate = () => {
 const revisarVidas = () => { 
   if ( vidasEnemigo == 0 ) {
     crearMensajeFinal('FELICITACIONES !!! Ganaste 🥳🥳🥳')
-  } else if ( vidasJugador >= 0 ) { 
+    deshabilitar()
+  } else if ( vidasJugador == 0 ) { 
     crearMensajeFinal('Lo sentimos pero perdiste 😞😞😞')
-  }
+    deshabilitar()
+  } 
 }
 
 // Mostrando los ataques y resultados seleccionados en pantalla
@@ -151,6 +155,14 @@ const crearMensajeFinal = (resultadoFinal) => {
   parrafo.innerHTML = resultadoFinal
   
   sectionMensajes.appendChild(parrafo)
+}
+
+// Deshabilitar los botones 
+
+const deshabilitar = () => {
+  botonFuego.disabled = true
+  botonAgua.disabled = true
+  botonTierra.disabled = true
 }
 
 // Reiniciar el juego 
