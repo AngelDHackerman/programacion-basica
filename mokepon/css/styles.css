@@ -32,11 +32,18 @@ body {
 }
 
 .tarjeta-de-mokepon { 
-  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
   height: 100px;
   background: #114685;
   padding: 10px;
   border-radius: 20px;
+}
+
+.tarjeta-de-mokepon img { 
+  width: 80px;
 }
 
 input {
