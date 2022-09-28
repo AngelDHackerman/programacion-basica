@@ -1,41 +1,13 @@
-/* Reseteando los margenes y espacios de las etiquetas */
-
-* { 
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body { 
-  background-color: #eee;
-}
-
-
-/* body */
-
-h1.titulo { 
+.titulo { 
   color: hotpink;
-  margin: 10px;
-  padding: 10px;
-  width: 350px;
-  height: 60px;
+  width: 310px;
+  height: 50px;
   background-color: teal;
 }
 
-label {                       /* ? este no toma ni alto ni ancho */
-  background-color: tomato;
-  /* width: 315px;
-  height: 50px; */
-}
-
-input { 
-  background-color: aqua;
-  width: 100px;
-  height: 50px;
-}
-
-button { 
-  background-color: blueviolet;
-  width: 310px;
-  height: 50px;
+#seleccionar-mascota { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
