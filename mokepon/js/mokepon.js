@@ -165,10 +165,23 @@ const deshabilitarReiniciar = () => {
 // Mostrando los ataques y resultados seleccionados en pantalla
 
 const crearMensaje = (resultado) => { 
-  let sectionMensajes = document.getElementById('mensajes')
-  let parrafo = document.createElement('p')
-  parrafo.innerHTML = (`Tu mascota ataco con ${ataqueJugador}, la mascota del enemigo con ${ataqueEnemigo} - ${resultado}.`)
-  sectionMensajes.appendChild(parrafo)
+  let sectionResultado = document.getElementById('resultado')
+  let ataquesDelJugador = document.getElementById('ataques-del-jugador')
+  let ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
+
+  let notificacion = document.createElement('p')  // ? esto va a crear un nuevo elemento "p" al final del texto de nuestra pagina
+  let nuevoAtaqueDelJugador = document.createElement('p')
+  let nuevoAtaqueDelEnemigo = document.createElement('p')
+
+  notificacion.innerHTML = resultado
+  nuevoAtaqueDelJugador.innerHTML = ataqueJugador
+  nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
+  // let parrafo = document.createElement('p')
+  // parrafo.innerHTML = (`Tu mascota ataco con ${ataqueJugador}, la mascota del enemigo con ${ataqueEnemigo} - ${resultado}.`)
+
+  sectionResultado.appendChild(notificacion)
+  ataquesDelJugador.appendChild(nuevoAtaqueDelJugador)
+  ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
 }
 
 const crearMensajeFinal = (resultadoFinal) => { 
