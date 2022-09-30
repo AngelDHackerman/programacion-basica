@@ -103,3 +103,15 @@ input {
   text-align: center;
   color: white;
 }
+
+@media (max-width: 380px) { 
+  .tarjetas { 
+    flex-direction: column;
+  }
+
+  .botones-de-ataque {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
