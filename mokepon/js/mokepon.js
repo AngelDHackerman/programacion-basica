@@ -144,10 +144,10 @@ const combate = () => {
 
 const revisarVidas = () => { 
   if ( vidasEnemigo == 0 ) {
-    crearMensajeFinal(' FELICITACIONES !!! Ganaste 🥳🥳🥳')
+    crearMensajeFinal(' FELICITACIONES !!! Ganaste 🥳')
     deshabilitarReiniciar()
   } else if ( vidasJugador == 0 ) { 
-    crearMensajeFinal(' Lo sentimos pero perdiste 😞😞😞')
+    crearMensajeFinal(' Lo sentimos pero perdiste 😞')
     deshabilitarReiniciar()
   } 
 }
