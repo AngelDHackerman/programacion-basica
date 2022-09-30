@@ -95,5 +95,11 @@ input {
   border: none;
   color: #11468f;
   font-family: 'Poppins', sans-serif;
+}
 
+.ataques { 
+  display: grid;
+  grid-template-columns: 100px 100px;  /* De esta manera creamos 2 columnas de 100px cada una */
+  text-align: center;
+  color: white;
 }
