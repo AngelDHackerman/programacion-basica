@@ -144,10 +144,10 @@ const combate = () => {
 
 const revisarVidas = () => { 
   if ( vidasEnemigo == 0 ) {
-    crearMensajeFinal('FELICITACIONES !!! Ganaste 🥳🥳🥳')
+    crearMensajeFinal(' FELICITACIONES !!! Ganaste 🥳🥳🥳')
     deshabilitarReiniciar()
   } else if ( vidasJugador == 0 ) { 
-    crearMensajeFinal('Lo sentimos pero perdiste 😞😞😞')
+    crearMensajeFinal(' Lo sentimos pero perdiste 😞😞😞')
     deshabilitarReiniciar()
   } 
 }
@@ -169,28 +169,23 @@ const crearMensaje = (resultado) => {
   let ataquesDelJugador = document.getElementById('ataques-del-jugador')
   let ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 
-  let notificacion = document.createElement('p')  // ? esto va a crear un nuevo elemento "p" al final del texto de nuestra pagina
-  let nuevoAtaqueDelJugador = document.createElement('p')
+  let nuevoAtaqueDelJugador = document.createElement('p')  // ? esto va a crear un nuevo elemento "p" al final del texto de nuestra pagina
   let nuevoAtaqueDelEnemigo = document.createElement('p')
 
-  notificacion.innerHTML = resultado
+  sectionResultado.innerHTML = resultado
   nuevoAtaqueDelJugador.innerHTML = ataqueJugador
   nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
   // let parrafo = document.createElement('p')
   // parrafo.innerHTML = (`Tu mascota ataco con ${ataqueJugador}, la mascota del enemigo con ${ataqueEnemigo} - ${resultado}.`)
 
-  sectionResultado.appendChild(notificacion)
   ataquesDelJugador.appendChild(nuevoAtaqueDelJugador)
   ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
 }
 
 const crearMensajeFinal = (resultadoFinal) => { 
-  let sectionMensajes = document.getElementById('mensajes')
+  let sectionResultado = document.getElementById('resultado')
 
-  let parrafo = document.createElement('p')
-  parrafo.innerHTML = resultadoFinal
-  
-  sectionMensajes.appendChild(parrafo)
+  sectionResultado.innerHTML = resultadoFinal
 }
 
 
