@@ -4,24 +4,24 @@ let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 
-let inputHipodoge = document.getElementById('hipodoge')
-let inputCapipepo = document.getElementById('capipepo')
-let inputRatigueya = document.getElementById('ratigueya')
-let spanMascotaJugador = document.getElementById('mascota-jugador')
+const inputHipodoge = document.getElementById('hipodoge')
+const inputCapipepo = document.getElementById('capipepo')
+const inputRatigueya = document.getElementById('ratigueya')
+const spanMascotaJugador = document.getElementById('mascota-jugador')
 
-let botonMascotaJugador = document.getElementById('boton-mascota');
-let botonFuego = document.getElementById('boton-fuego')
-let botonAgua = document.getElementById('boton-agua')
-let botonTierra = document.getElementById('boton-tierra')
+const botonMascotaJugador = document.getElementById('boton-mascota');
+const botonFuego = document.getElementById('boton-fuego')
+const botonAgua = document.getElementById('boton-agua')
+const botonTierra = document.getElementById('boton-tierra')
 
-let seccionMascota = document.getElementById('seleccionar-mascota')
-let seccionAtaque = document.getElementById('seleccionar-ataque')
-let botonReiniciar = document.getElementById('boton-reiniciar')
+const seccionMascota = document.getElementById('seleccionar-mascota')
+const seccionAtaque = document.getElementById('seleccionar-ataque')
+const botonReiniciar = document.getElementById('boton-reiniciar')
 
-let spanVidasJugador = document.getElementById('vidas-jugador')
-let spanVidasEnemigo = document.getElementById('vidas-enemigo')
+const spanVidasJugador = document.getElementById('vidas-jugador')
+const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 
-let sectionResultado = document.getElementById('resultado')
+const sectionResultado = document.getElementById('resultado')
 
 const iniciarJuego = () => { 
 
@@ -175,8 +175,6 @@ const crearMensaje = (resultado) => {
   sectionResultado.innerHTML = resultado
   nuevoAtaqueDelJugador.innerHTML = ataqueJugador
   nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
-  // let parrafo = document.createElement('p')
-  // parrafo.innerHTML = (`Tu mascota ataco con ${ataqueJugador}, la mascota del enemigo con ${ataqueEnemigo} - ${resultado}.`)
 
   ataquesDelJugador.appendChild(nuevoAtaqueDelJugador)
   ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
@@ -199,6 +197,5 @@ const reiniciarJuego = () => {
 const aleatorio = (min, max) => { 
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
-
 
 window.addEventListener('load', iniciarJuego)  // ? Asi podemos escuchar cuando el documento de Html este por completo cargado y ejecutar el JS 
