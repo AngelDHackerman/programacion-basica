@@ -25,6 +25,8 @@ const sectionResultado = document.getElementById('resultado')
 
 // Clase para crear mokepones
 
+let mokepones = []
+
 class Mokepon { 
   constructor ( nombre, foto, vida ) { 
     this.nombre = nombre
@@ -36,13 +38,12 @@ class Mokepon {
 // Creando la instancia para los mokepones
 
 let hipodoge = new Mokepon('hipodoge', '../assets/mokepons_mokepon_hipodoge_attack.webp', 5)
-console.log(hipodoge)
-
 let capipepo = new Mokepon('capipepo', '../assets/mokepons_mokepon_capipepo_attack.webp', 5)
-console.log(capipepo)
-
 let ratigueya = new Mokepon('ratiguera', '../assets/mokepons_mokepon_ratigueya_attack.webp', 5)
-console.log(ratigueya)
+
+mokepones.push(hipodoge, capipepo, ratigueya)  // .push() agrega los elementos al array seleccionado.
+
+console.log(mokepones)
 
 
 
