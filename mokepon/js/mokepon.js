@@ -13,6 +13,7 @@ let seccionMascota = document.getElementById('seleccionar-mascota')
 let seccionAtaque = document.getElementById('seleccionar-ataque')
 let botonReiniciar = document.getElementById('boton-reiniciar')
 
+let sectionResultado = document.getElementById('resultado')
 
 const iniciarJuego = () => { 
 
@@ -165,7 +166,6 @@ const deshabilitarReiniciar = () => {
 // Mostrando los ataques y resultados seleccionados en pantalla
 
 const crearMensaje = (resultado) => { 
-  let sectionResultado = document.getElementById('resultado')
   let ataquesDelJugador = document.getElementById('ataques-del-jugador')
   let ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 
@@ -183,7 +183,6 @@ const crearMensaje = (resultado) => {
 }
 
 const crearMensajeFinal = (resultadoFinal) => { 
-  let sectionResultado = document.getElementById('resultado')
 
   sectionResultado.innerHTML = resultadoFinal
 }
