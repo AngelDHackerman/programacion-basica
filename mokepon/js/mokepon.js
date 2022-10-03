@@ -4,6 +4,11 @@ let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 
+let inputHipodoge = document.getElementById('hipodoge')
+let inputCapipepo = document.getElementById('capipepo')
+let inputRatigueya = document.getElementById('ratigueya')
+let spanMascotaJugador = document.getElementById('mascota-jugador')
+
 let botonMascotaJugador = document.getElementById('boton-mascota');
 let botonFuego = document.getElementById('boton-fuego')
 let botonAgua = document.getElementById('boton-agua')
@@ -31,12 +36,6 @@ const iniciarJuego = () => {
 // Seleccionando la mascota del jugador
 
 const seleccionarMascotaJugador = () => { 
-
-  let inputHipodoge = document.getElementById('hipodoge')
-  let inputCapipepo = document.getElementById('capipepo')
-  let inputRatigueya = document.getElementById('ratigueya')
-  let spanMascotaJugador = document.getElementById('mascota-jugador')
-
 
   if ( inputHipodoge.checked ) { 
     spanMascotaJugador.innerHTML = "Hipodoge"
