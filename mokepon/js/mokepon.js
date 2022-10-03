@@ -23,6 +23,29 @@ const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 
 const sectionResultado = document.getElementById('resultado')
 
+// Clase para crear mokepones
+
+class Mokepon { 
+  constructor ( nombre, foto, vida ) { 
+    this.nombre = nombre
+    this.foto = foto
+    this.vida = vida
+  }
+}
+
+// Creando la instancia para los mokepones
+
+let hipodoge = new Mokepon('hipodoge', '../assets/mokepons_mokepon_hipodoge_attack.webp', 5)
+console.log(hipodoge)
+
+let capipepo = new Mokepon('capipepo', '../assets/mokepons_mokepon_capipepo_attack.webp', 5)
+console.log(capipepo)
+
+let ratigueya = new Mokepon('ratiguera', '../assets/mokepons_mokepon_ratigueya_attack.webp', 5)
+console.log(ratigueya)
+
+
+
 const iniciarJuego = () => { 
 
   botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador);
