@@ -18,6 +18,9 @@ let seccionMascota = document.getElementById('seleccionar-mascota')
 let seccionAtaque = document.getElementById('seleccionar-ataque')
 let botonReiniciar = document.getElementById('boton-reiniciar')
 
+let spanVidasJugador = document.getElementById('vidas-jugador')
+let spanVidasEnemigo = document.getElementById('vidas-enemigo')
+
 let sectionResultado = document.getElementById('resultado')
 
 const iniciarJuego = () => { 
@@ -112,8 +115,6 @@ const ataqueAleatorioEnemigo = () => {
 
 const combate = () => {
   let resultado
-  let spanVidasJugador = document.getElementById('vidas-jugador')
-  let spanVidasEnemigo = document.getElementById('vidas-enemigo')
 
   if ( ataqueEnemigo == ataqueJugador ) { 
     resultado = 'EMPATE 😐' 
