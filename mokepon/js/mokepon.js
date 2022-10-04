@@ -56,8 +56,8 @@ capipepo.ataques.push(
   {nombre: '🌱', id: 'boton-tierra'},
   {nombre: '🌱', id: 'boton-tierra'},
   {nombre: '🌱', id: 'boton-tierra'},
-  {nombre: '🔥', id: 'boton-fuego'},
   {nombre: '💧', id: 'boton-tierra'},
+  {nombre: '🔥', id: 'boton-fuego'},
 )
 
 ratigueya.ataques.push( 
