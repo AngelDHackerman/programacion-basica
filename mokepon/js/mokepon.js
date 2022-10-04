@@ -40,9 +40,11 @@ class Mokepon {
 
 // Creando la instancia para los mokepones
 
-let hipodoge = new Mokepon('hipodoge', '../assets/mokepons_mokepon_hipodoge_attack.webp', 5)
-let capipepo = new Mokepon('capipepo', '../assets/mokepons_mokepon_capipepo_attack.webp', 5)
-let ratigueya = new Mokepon('ratiguera', '../assets/mokepons_mokepon_ratigueya_attack.webp', 5)
+let hipodoge = new Mokepon('hipodoge', './assets/mokepons_mokepon_hipodoge_attack.webp', 5)
+let capipepo = new Mokepon('capipepo', './assets/mokepons_mokepon_capipepo_attack.webp', 5)
+let ratigueya = new Mokepon('ratiguera', './assets/mokepons_mokepon_ratigueya_attack.webp', 5)
+
+console.log(hipodoge)
 
 // Agregando 5 ataques por cada mokepon
 
@@ -76,15 +78,19 @@ mokepones.push(hipodoge, capipepo, ratigueya)  // .push() agrega los elementos a
 const iniciarJuego = () => { 
 
   mokepones.forEach((mokepon) => { // for each mokepon in mokepones
+
+    console.log(mokepon.foto)
+
+
     opcionDeMokepones = `
     <input type="radio" name="mascota" id=${mokepon.nombre}>
     <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
       <p>${mokepon.nombre}</p>
-      <img src=${mokepon.foto} alt="${mokepon.nombre}">
+      <img src='${mokepon.foto}' alt="${mokepon.nombre}">
     </label>
     `
 
-  contenedorTarjetas.innerHTML = opcionDeMokepones  // ? Asi insertamos el valor del template de arriba en el div que seleccionamos.
+  contenedorTarjetas.innerHTML += opcionDeMokepones  // ? Asi insertamos el valor del template de arriba en el div que seleccionamos.
 
   })
 
