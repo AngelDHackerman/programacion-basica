@@ -3,11 +3,13 @@ let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
+let opcionDeMokepones
 
 const inputHipodoge = document.getElementById('hipodoge')
 const inputCapipepo = document.getElementById('capipepo')
 const inputRatigueya = document.getElementById('ratigueya')
 const spanMascotaJugador = document.getElementById('mascota-jugador')
+const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
 
 const botonMascotaJugador = document.getElementById('boton-mascota');
 const botonFuego = document.getElementById('boton-fuego')
@@ -42,7 +44,7 @@ let hipodoge = new Mokepon('hipodoge', '../assets/mokepons_mokepon_hipodoge_atta
 let capipepo = new Mokepon('capipepo', '../assets/mokepons_mokepon_capipepo_attack.webp', 5)
 let ratigueya = new Mokepon('ratiguera', '../assets/mokepons_mokepon_ratigueya_attack.webp', 5)
 
-mokepones.push(hipodoge, capipepo, ratigueya)  // .push() agrega los elementos al array seleccionado.
+// Agregando 5 ataques por cada mokepon
 
 hipodoge.ataques.push( 
   {nombre: '💧', id: 'boton-agua'},
@@ -68,8 +70,23 @@ ratigueya.ataques.push(
   {nombre: '🌱', id: 'boton-tierra'},
 )
 
+mokepones.push(hipodoge, capipepo, ratigueya)  // .push() agrega los elementos al array seleccionado.
+
 
 const iniciarJuego = () => { 
+
+  mokepones.forEach((mokepon) => { // for each mokepon in mokepones
+    opcionDeMokepones = `
+    <input type="radio" name="mascota" id=${mokepon.nombre}>
+    <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
+      <p>${mokepon.nombre}</p>
+      <img src=${mokepon.foto} alt="${mokepon.nombre}">
+    </label>
+    `
+
+  contenedorTarjetas.innerHTML = opcionDeMokepones  // ? Asi insertamos el valor del template de arriba en el div que seleccionamos.
+
+  })
 
   botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador);
 
