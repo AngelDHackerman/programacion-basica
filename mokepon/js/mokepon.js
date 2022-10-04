@@ -32,6 +32,7 @@ class Mokepon {
     this.nombre = nombre
     this.foto = foto
     this.vida = vida
+    this.ataques = []
   }
 }
 
@@ -43,8 +44,29 @@ let ratigueya = new Mokepon('ratiguera', '../assets/mokepons_mokepon_ratigueya_a
 
 mokepones.push(hipodoge, capipepo, ratigueya)  // .push() agrega los elementos al array seleccionado.
 
-console.log(mokepones)
+hipodoge.ataques.push( 
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🌱', id: 'boton-tierra'},
+)
 
+capipepo.ataques.push( 
+  {nombre: '🌱', id: 'boton-tierra'},
+  {nombre: '🌱', id: 'boton-tierra'},
+  {nombre: '🌱', id: 'boton-tierra'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '💧', id: 'boton-tierra'},
+)
+
+ratigueya.ataques.push( 
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '🌱', id: 'boton-tierra'},
+)
 
 
 const iniciarJuego = () => { 
