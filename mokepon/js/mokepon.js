@@ -14,6 +14,7 @@ const botonAgua = document.getElementById('boton-agua')
 const botonTierra = document.getElementById('boton-tierra')
 
 const seccionMascota = document.getElementById('seleccionar-mascota')
+const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
 const seccionAtaque = document.getElementById('seleccionar-ataque')
 const botonReiniciar = document.getElementById('boton-reiniciar')
 
@@ -136,17 +137,11 @@ const ocultarSeccionMascotas = () => {
 // Seleccionando la mascota del enemigo
 
 const seleccionarMascotaEnemigo = () => { 
-  let mascotaAleatorio = aleatorio(1, 3)
-  let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
+  let mascotaAleatorio = aleatorio(0, mokepones.length - 1 )
 
-  if ( mascotaAleatorio == 1 ) { 
-    spanMascotaEnemigo.innerHTML = 'Hipodoge'
-  } else if ( mascotaAleatorio == 2 ) { 
-    spanMascotaEnemigo.innerHTML = 'Capipepo'
-  } else {
-    spanMascotaEnemigo.innerHTML = 'Ratigueya'
-  }
+  spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
 }
+
 
 // Seleccionando el Ataque del usuario
 
