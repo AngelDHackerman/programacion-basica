@@ -112,13 +112,13 @@ const iniciarJuego = () => {
 const seleccionarMascotaJugador = () => { 
 
   if ( inputHipodoge.checked ) { 
-    spanMascotaJugador.innerHTML = "Hipodoge"
+    spanMascotaJugador.innerHTML = inputHipodoge.id  // el id se asigna en la linea '84' 
     ocultarSeccionMascotas()  
   } else if ( inputCapipepo.checked ) {
-    spanMascotaJugador.innerHTML = "Capipepo"
+    spanMascotaJugador.innerHTML = inputCapipepo.id
     ocultarSeccionMascotas()  
   } else if ( inputRatigueya.checked ) { 
-    spanMascotaJugador.innerHTML = "Ratigueya"
+    spanMascotaJugador.innerHTML = inputRatigueya.id
     ocultarSeccionMascotas()  
   } else {
     alert('Selecciona una mascota para poder continuar! 🙃')
