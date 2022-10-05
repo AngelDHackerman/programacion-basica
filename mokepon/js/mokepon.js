@@ -5,9 +5,6 @@ let vidasJugador = 3
 let vidasEnemigo = 3
 let opcionDeMokepones
 
-const inputHipodoge = document.getElementById('hipodoge')
-const inputCapipepo = document.getElementById('capipepo')
-const inputRatigueya = document.getElementById('ratigueya')
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
 
@@ -29,6 +26,10 @@ const sectionResultado = document.getElementById('resultado')
 
 let mokepones = []
 
+let inputHipodoge 
+let inputCapipepo 
+let inputRatigueya
+
 class Mokepon { 
   constructor ( nombre, foto, vida ) { 
     this.nombre = nombre
@@ -42,7 +43,7 @@ class Mokepon {
 
 let hipodoge = new Mokepon('hipodoge', './assets/mokepons_mokepon_hipodoge_attack.webp', 5)
 let capipepo = new Mokepon('capipepo', './assets/mokepons_mokepon_capipepo_attack.webp', 5)
-let ratigueya = new Mokepon('ratiguera', './assets/mokepons_mokepon_ratigueya_attack.webp', 5)
+let ratigueya = new Mokepon('ratigueya', './assets/mokepons_mokepon_ratigueya_attack.webp', 5)
 
 console.log(hipodoge)
 
@@ -79,9 +80,6 @@ const iniciarJuego = () => {
 
   mokepones.forEach((mokepon) => { // for each mokepon in mokepones
 
-    console.log(mokepon.foto)
-
-
     opcionDeMokepones = `
     <input type="radio" name="mascota" id=${mokepon.nombre}>
     <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
@@ -91,6 +89,10 @@ const iniciarJuego = () => {
     `
 
   contenedorTarjetas.innerHTML += opcionDeMokepones  // ? Asi insertamos el valor del template de arriba en el div que seleccionamos.
+
+  inputHipodoge = document.getElementById('hipodoge')
+  inputCapipepo = document.getElementById('capipepo')
+  inputRatigueya = document.getElementById('ratigueya')
 
   })
 
