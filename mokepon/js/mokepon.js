@@ -47,8 +47,6 @@ let hipodoge = new Mokepon('hipodoge', './assets/mokepons_mokepon_hipodoge_attac
 let capipepo = new Mokepon('capipepo', './assets/mokepons_mokepon_capipepo_attack.webp', 5)
 let ratigueya = new Mokepon('ratigueya', './assets/mokepons_mokepon_ratigueya_attack.webp', 5)
 
-console.log(hipodoge)
-
 // Agregando 5 ataques por cada mokepon
 
 hipodoge.ataques.push( 
@@ -129,7 +127,18 @@ const seleccionarMascotaJugador = () => {
     alert('Selecciona una mascota para poder continuar! 🙃')
   }
 
+  extraerAtaques(mascotaJugador)
   seleccionarMascotaEnemigo()
+}
+
+const extraerAtaques = (mascotaJugador) => { 
+  let ataques
+  for (let i = 0; i < mokepones.length; i++) {
+    if ( mascotaJugador == mokepones[i].nombre ) { 
+      ataques = mokepones[i].ataques
+    }
+  }
+  mostrarAtaques(ataques)
 }
 
 const ocultarSeccionMascotas = () => {
