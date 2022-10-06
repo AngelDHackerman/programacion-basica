@@ -164,10 +164,11 @@ const ocultarSeccionMascotas = () => {
 // Seleccionando la mascota del enemigo
 
 const seleccionarMascotaEnemigo = () => { 
-  let mascotaAleatorio = aleatorio(0, mokepones.length - 1 )
+  let mascotaAleatorio = aleatorio(1, mokepones.length )
 
   spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
 }
+console.log(mokepones)
 
 
 // Seleccionando el Ataque del usuario
