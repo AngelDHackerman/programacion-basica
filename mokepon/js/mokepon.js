@@ -4,6 +4,7 @@ let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 let opcionDeMokepones
+let mascotaJugador
 
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
@@ -114,12 +115,15 @@ const seleccionarMascotaJugador = () => {
 
   if ( inputHipodoge.checked ) { 
     spanMascotaJugador.innerHTML = inputHipodoge.id  // el id se asigna en la linea '84' 
+    mascotaJugador = inputHipodoge.id
     ocultarSeccionMascotas()  
   } else if ( inputCapipepo.checked ) {
     spanMascotaJugador.innerHTML = inputCapipepo.id
+    mascotaJugador = inputCapipepo.id
     ocultarSeccionMascotas()  
   } else if ( inputRatigueya.checked ) { 
     spanMascotaJugador.innerHTML = inputRatigueya.id
+    mascotaJugador = inputRatigueya.id
     ocultarSeccionMascotas()  
   } else {
     alert('Selecciona una mascota para poder continuar! 🙃')
