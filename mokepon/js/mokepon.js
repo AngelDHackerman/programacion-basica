@@ -4,20 +4,22 @@ let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 let opcionDeMokepones
+let botonFuego
+let botonAgua
+let botonTierra
 let mascotaJugador
+let ataquesMokepon
 
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
 
 const botonMascotaJugador = document.getElementById('boton-mascota');
-const botonFuego = document.getElementById('boton-fuego')
-const botonAgua = document.getElementById('boton-agua')
-const botonTierra = document.getElementById('boton-tierra')
 
 const seccionMascota = document.getElementById('seleccionar-mascota')
 const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
 const seccionAtaque = document.getElementById('seleccionar-ataque')
 const botonReiniciar = document.getElementById('boton-reiniciar')
+const contenedorAtaques = document.getElementById('contenedor-ataques')
 
 const spanVidasJugador = document.getElementById('vidas-jugador')
 const spanVidasEnemigo = document.getElementById('vidas-enemigo')
@@ -98,10 +100,6 @@ const iniciarJuego = () => {
 
   botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador);
 
-  botonFuego.addEventListener('click', ataqueFuego)
-  botonAgua.addEventListener('click', ataqueAgua)
-  botonTierra.addEventListener('click', ataqueTierra)
-
   seccionAtaque.style.display = 'none'
   botonReiniciar.disabled = true
   botonReiniciar.addEventListener('click', reiniciarJuego)
@@ -139,6 +137,22 @@ const extraerAtaques = (mascotaJugador) => {
     }
   }
   mostrarAtaques(ataques)
+}
+
+const mostrarAtaques = (ataques) => { 
+  ataques.forEach((ataque) => { 
+    ataquesMokepon = ` 
+    <button class="boton-de-ataque" id="${ataque.id}">${ataque.nombre}</button>
+    `
+    contenedorAtaques.innerHTML += ataquesMokepon
+  })
+  botonFuego = document.getElementById('boton-fuego')
+  botonAgua = document.getElementById('boton-agua')
+  botonTierra = document.getElementById('boton-tierra')
+
+  botonFuego.addEventListener('click', ataqueFuego)
+  botonAgua.addEventListener('click', ataqueAgua)
+  botonTierra.addEventListener('click', ataqueTierra)
 }
 
 const ocultarSeccionMascotas = () => {
