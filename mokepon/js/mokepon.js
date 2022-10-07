@@ -63,7 +63,7 @@ capipepo.ataques.push(
   {nombre: '🌱', id: 'boton-tierra'},
   {nombre: '🌱', id: 'boton-tierra'},
   {nombre: '🌱', id: 'boton-tierra'},
-  {nombre: '💧', id: 'boton-tierra'},
+  {nombre: '💧', id: 'boton-agua'},
   {nombre: '🔥', id: 'boton-fuego'},
 )
 
