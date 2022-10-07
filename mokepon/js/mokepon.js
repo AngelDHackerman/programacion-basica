@@ -1,5 +1,5 @@
 
-let ataqueEnemigo
+let ataqueEnemigo = []
 let vidasJugador = 3
 let vidasEnemigo = 3
 let opcionDeMokepones
@@ -10,6 +10,7 @@ let mascotaJugador
 let ataquesMokepon
 let botones = []
 let ataqueJugador = []
+let ataquesMokeponEnemigo = []
 
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
@@ -170,6 +171,7 @@ const secuenciaAtaque = () => {
         console.log(ataqueJugador)
         boton.style.background = '#112f58'
       }
+      ataqueAleatorioEnemigo()
     })
   })
 }
@@ -186,22 +188,23 @@ const seleccionarMascotaEnemigo = () => {
   let mascotaAleatorio = aleatorio(0, mokepones.length - 1 )  // Esto debe comenzar en 0 porque el primer indice del array es 0, tambien -1 para evitar darle un indice extra al array.
 
   spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
+  ataquesMokeponEnemigo = mokepones[mascotaAleatorio].ataques
   secuenciaAtaque()
 }
 
 // Seleccionando aleatoriamente el Ataque del enemigo
 
 const ataqueAleatorioEnemigo = () => { 
-  let ataqueAleatorio = aleatorio(1,3)
+  let ataqueAleatorio = aleatorio( 0, ataquesMokeponEnemigo.length - 1 )
 
-  if ( ataqueAleatorio == 1 ) { 
-    ataqueEnemigo = 'FUEGO'
-  } else if ( ataqueAleatorio == 2 ) { 
-    ataqueEnemigo = 'AGUA'
+  if ( ataqueAleatorio == 0 || ataqueAleatorio == 1 ) { 
+    ataqueEnemigo.push('FUEGO')
+  } else if ( ataqueAleatorio == 3 || ataqueAleatorio == 4) { 
+    ataqueEnemigo.push('AGUA')
   } else { 
-    ataqueEnemigo = 'TIERRA'
+    ataqueEnemigo.push('TIERRA')
   }
-
+  console.log(ataqueEnemigo)
   combate()
 }
 
