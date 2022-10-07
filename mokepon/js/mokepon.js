@@ -1,5 +1,4 @@
 
-let ataqueJugador 
 let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
@@ -9,6 +8,8 @@ let botonAgua
 let botonTierra
 let mascotaJugador
 let ataquesMokepon
+let botones = []
+let ataqueJugador = []
 
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
@@ -142,17 +143,35 @@ const extraerAtaques = (mascotaJugador) => {
 const mostrarAtaques = (ataques) => { 
   ataques.forEach((ataque) => { 
     ataquesMokepon = ` 
-    <button class="boton-de-ataque" id="${ataque.id}">${ataque.nombre}</button>
+    <button class="boton-de-ataque BAtaque" id="${ataque.id}">${ataque.nombre}</button>
     `
     contenedorAtaques.innerHTML += ataquesMokepon
   })
   botonFuego = document.getElementById('boton-fuego')
   botonAgua = document.getElementById('boton-agua')
   botonTierra = document.getElementById('boton-tierra')
+  botones = document.querySelectorAll('.BAtaque')
 
-  botonFuego.addEventListener('click', ataqueFuego)
-  botonAgua.addEventListener('click', ataqueAgua)
-  botonTierra.addEventListener('click', ataqueTierra)
+}
+
+const secuenciaAtaque = () => { 
+  botones.forEach((boton) => {
+    boton.addEventListener('click', (e) => {
+      if ( e.target.textContent === '🔥') { 
+        ataqueJugador.push('FUEGO')
+        console.log(ataqueJugador)
+        boton.style.background = '#112f58'
+      } else if ( e.target.textContent === '💧') { 
+        ataqueJugador.push('AGUA')
+        console.log(ataqueJugador)
+        boton.style.background = '#112f58'
+      } else { 
+        ataqueJugador.push('TIERRA')
+        console.log(ataqueJugador)
+        boton.style.background = '#112f58'
+      }
+    })
+  })
 }
 
 const ocultarSeccionMascotas = () => {
@@ -164,29 +183,10 @@ const ocultarSeccionMascotas = () => {
 // Seleccionando la mascota del enemigo
 
 const seleccionarMascotaEnemigo = () => { 
-  let mascotaAleatorio = aleatorio(0, mokepones.length - 1 )
+  let mascotaAleatorio = aleatorio(0, mokepones.length - 1 )  // Esto debe comenzar en 0 porque el primer indice del array es 0, tambien -1 para evitar darle un indice extra al array.
 
   spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
-}
-console.log(mokepones)
-
-
-// Seleccionando el Ataque del usuario
-
-const ataqueFuego = () => {
-  ataqueJugador = 'FUEGO'
-  ataqueAleatorioEnemigo()
-}
-
-const ataqueAgua = () => {
-  ataqueJugador = 'AGUA'
-  ataqueAleatorioEnemigo()
-
-}
-
-const ataqueTierra = () => {
-  ataqueJugador = 'TIERRA'
-  ataqueAleatorioEnemigo()
+  secuenciaAtaque()
 }
 
 // Seleccionando aleatoriamente el Ataque del enemigo
