@@ -165,12 +165,15 @@ const secuenciaAtaque = () => {
       if ( e.target.textContent === '🔥') { 
         ataqueJugador.push('FUEGO')
         boton.style.background = '#112f58'
+        boton.disabled = true  // ? Con esto deshabilitamos los botones seleccionados
       } else if ( e.target.textContent === '💧') { 
         ataqueJugador.push('AGUA')
         boton.style.background = '#112f58'
+        boton.disabled = true
       } else { 
         ataqueJugador.push('TIERRA')
         boton.style.background = '#112f58'
+        boton.disabled = true
       }
       ataqueAleatorioEnemigo()
     })
@@ -227,7 +230,6 @@ const combate = () => {
     if(ataqueJugador[i] === ataqueEnemigo[i]) { 
       indexAmbosOponentes(i, i)
       crearMensaje('EMPATE')
-      spanVidasJugador.innerHTML = victoriasJugador
     } else if ( ataqueJugador[i] === 'FUEGO' && ataqueEnemigo[i] === 'TIERRA' ) { 
       indexAmbosOponentes(i, i)
       crearMensaje('GANASTE')
