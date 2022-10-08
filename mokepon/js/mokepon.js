@@ -1,5 +1,6 @@
 
 let ataqueEnemigo = []
+let ataqueJugador = []
 let vidasJugador = 3
 let vidasEnemigo = 3
 let opcionDeMokepones
@@ -9,7 +10,8 @@ let botonTierra
 let mascotaJugador
 let ataquesMokepon
 let botones = []
-let ataqueJugador = []
+let indexAtaqueJugador
+let indexAtaqueEnemigo
 let ataquesMokeponEnemigo = []
 
 const spanMascotaJugador = document.getElementById('mascota-jugador')
@@ -160,15 +162,12 @@ const secuenciaAtaque = () => {
     boton.addEventListener('click', (e) => {
       if ( e.target.textContent === '🔥') { 
         ataqueJugador.push('FUEGO')
-        console.log(ataqueJugador)
         boton.style.background = '#112f58'
       } else if ( e.target.textContent === '💧') { 
         ataqueJugador.push('AGUA')
-        console.log(ataqueJugador)
         boton.style.background = '#112f58'
       } else { 
         ataqueJugador.push('TIERRA')
-        console.log(ataqueJugador)
         boton.style.background = '#112f58'
       }
       ataqueAleatorioEnemigo()
@@ -204,36 +203,31 @@ const ataqueAleatorioEnemigo = () => {
   } else { 
     ataqueEnemigo.push('TIERRA')
   }
-  console.log(ataqueEnemigo)
-  combate()
+  iniciarPelea ()
+}
+
+const iniciarPelea = () => { 
+  if ( ataqueJugador.length === 5 ) { 
+    combate()
+  }
 }
 
 // Combate entre mascotas
 
-const combate = () => {
-  let resultado
+const indexAmbosOponentes = ( jugador, enemigo ) => { 
+  indexAtaqueJugador = ataqueJugador[jugador]
+  indexAtaqueEnemigo = ataqueEnemigo[enemigo]
+}
 
-  if ( ataqueEnemigo == ataqueJugador ) { 
-    resultado = 'EMPATE 😐' 
-  } else if ( ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') { 
-    resultado = 'GANASTE! 🥳'
-    vidasEnemigo--
-    spanVidasEnemigo.innerHTML = vidasEnemigo
-  } else if ( ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO') {
-    resultado = 'GANASTE! 🥳' 
-    vidasEnemigo--
-    spanVidasEnemigo.innerHTML = vidasEnemigo
-  } else if ( ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA') { 
-    resultado = 'GANASTE! 🥳'
-    vidasEnemigo--
-    spanVidasEnemigo.innerHTML = vidasEnemigo
-  } else {
-    resultado = 'PERDISTE 😞'
-    vidasJugador--  // Este le resta -1 a las vidas
-    spanVidasJugador.innerHTML = vidasJugador
+const combate = () => {
+
+  for (let i = 0; i < ataqueJugador.length; i++) {
+    if(ataqueJugador[i] === ataqueEnemigo[i]) { 
+      indexAmbosOponentes(i, i)
+      crearMensaje('EMPATE')
+    }
+    
   }
-  
-  crearMensaje(resultado)
   
   revisarVidas()
 }
@@ -270,8 +264,8 @@ const crearMensaje = (resultado) => {
   let nuevoAtaqueDelEnemigo = document.createElement('p')
 
   sectionResultado.innerHTML = resultado
-  nuevoAtaqueDelJugador.innerHTML = ataqueJugador
-  nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
+  nuevoAtaqueDelJugador.innerHTML = indexAtaqueJugador
+  nuevoAtaqueDelEnemigo.innerHTML = indexAtaqueEnemigo
 
   ataquesDelJugador.appendChild(nuevoAtaqueDelJugador)
   ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
