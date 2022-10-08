@@ -259,6 +259,7 @@ const combate = () => {
 const revisarVictorias = () => { 
   if ( victoriasJugador === victoriasEnemigo ) {
     crearMensajeFinal('Esto fuen un empate 😐')
+    deshabilitarReiniciar()
   } else if ( victoriasJugador > victoriasEnemigo ) { 
     crearMensajeFinal(' FELICITACIONES !!! Ganaste 🥳')
     deshabilitarReiniciar()
