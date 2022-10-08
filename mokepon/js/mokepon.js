@@ -12,6 +12,8 @@ let ataquesMokepon
 let botones = []
 let indexAtaqueJugador
 let indexAtaqueEnemigo
+let victoriasJugador = 0
+let victoriasEnemigo = 0
 let ataquesMokeponEnemigo = []
 
 const spanMascotaJugador = document.getElementById('mascota-jugador')
@@ -225,43 +227,45 @@ const combate = () => {
     if(ataqueJugador[i] === ataqueEnemigo[i]) { 
       indexAmbosOponentes(i, i)
       crearMensaje('EMPATE')
-      spanVidasEnemigo.innerHTML = vidasEnemigo
+      spanVidasJugador.innerHTML = victoriasJugador
     } else if ( ataqueJugador[i] === 'FUEGO' && ataqueEnemigo[i] === 'TIERRA' ) { 
       indexAmbosOponentes(i, i)
       crearMensaje('GANASTE')
-      vidasEnemigo--
-      spanVidasEnemigo.innerHTML = vidasEnemigo
+      victoriasJugador++
+      spanVidasJugador.innerHTML = victoriasJugador
     } else if ( ataqueJugador[i] === 'AGUA' && ataqueEnemigo[i] === 'FUEGO' ) { 
       indexAmbosOponentes(i, i)
       crearMensaje('GANASTE')
-      vidasEnemigo--
-      spanVidasEnemigo.innerHTML = vidasEnemigo
+      victoriasJugador++
+      spanVidasJugador.innerHTML = victoriasJugador
     } else if ( ataqueJugador[i] === 'TIERRA' && ataqueEnemigo[i] === 'AGUA' ) { 
       indexAmbosOponentes(i, i)
       crearMensaje('GANASTE')
-      vidasEnemigo--
-      spanVidasEnemigo.innerHTML = vidasEnemigo
+      victoriasJugador++
+      spanVidasJugador.innerHTML = victoriasJugador
     } else { 
       indexAmbosOponentes(i, i)
       crearMensaje('PERDISTE')
-      vidasJugador--
-      spanVidasJugador.innerHTML = vidasJugador
+      victoriasEnemigo++
+      spanVidasEnemigo.innerHTML = victoriasEnemigo
     }
   }
-  revisarVidas()
+  revisarVictorias()
   
 }
 
 // Revisar las vidas de los jugadores y enviar el mensaje final. 
 
-const revisarVidas = () => { 
-  if ( vidasEnemigo == 0 ) {
+const revisarVictorias = () => { 
+  if ( victoriasJugador === victoriasEnemigo ) {
+    crearMensajeFinal('Esto fuen un empate 😐')
+  } else if ( victoriasJugador > victoriasEnemigo ) { 
     crearMensajeFinal(' FELICITACIONES !!! Ganaste 🥳')
     deshabilitarReiniciar()
-  } else if ( vidasJugador == 0 ) { 
+  } else {
     crearMensajeFinal(' Lo sentimos pero perdiste 😞')
     deshabilitarReiniciar()
-  } 
+  }
 }
 
 // Deshabilitar los botones 
