@@ -16,6 +16,9 @@ let victoriasJugador = 0
 let victoriasEnemigo = 0
 let ataquesMokeponEnemigo = []
 
+const sectionVerMapa = document.getElementById('ver-mapa')
+const mapa = document.getElementById('mapa')
+
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
 
@@ -31,6 +34,10 @@ const spanVidasJugador = document.getElementById('vidas-jugador')
 const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 
 const sectionResultado = document.getElementById('resultado')
+
+// Agregando el canvas (debe ser agregado aqui, no antes)
+
+let lienzo = mapa.getContext("2d")
 
 // Clase para crear mokepones
 
@@ -107,6 +114,7 @@ const iniciarJuego = () => {
   botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador);
 
   seccionAtaque.style.display = 'none'
+  sectionVerMapa.style.display = 'none'
   botonReiniciar.disabled = true
   botonReiniciar.addEventListener('click', reiniciarJuego)
 }
@@ -133,6 +141,19 @@ const seleccionarMascotaJugador = () => {
 
   extraerAtaques(mascotaJugador)
   seleccionarMascotaEnemigo()
+  sectionVerMapa.style.display = 'flex'
+
+  // creando la variable de la imagen de capipepo para el canvas
+
+  let imagenDeCapipepo = new Image()
+  imagenDeCapipepo.src = capipepo.foto
+  lienzo.drawImage(
+    imagenDeCapipepo,
+    20,  // posicion en X
+    40,  // posicion en y
+    100,  // Alto de imagen
+    100  // Ancho de imagen
+  )
 }
 
 const extraerAtaques = (mascotaJugador) => { 
@@ -182,7 +203,7 @@ const secuenciaAtaque = () => {
 
 const ocultarSeccionMascotas = () => {
   seccionMascota.style.display = 'none'
-  seccionAtaque.style.display = ''
+  seccionAtaque.style.display = 'none'  // todo: esto fue ocultado al momento de agregar el canvas. 
 }
 
 
