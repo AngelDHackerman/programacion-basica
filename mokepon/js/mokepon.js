@@ -225,11 +225,31 @@ const combate = () => {
     if(ataqueJugador[i] === ataqueEnemigo[i]) { 
       indexAmbosOponentes(i, i)
       crearMensaje('EMPATE')
+      spanVidasEnemigo.innerHTML = vidasEnemigo
+    } else if ( ataqueJugador[i] === 'FUEGO' && ataqueEnemigo[i] === 'TIERRA' ) { 
+      indexAmbosOponentes(i, i)
+      crearMensaje('GANASTE')
+      vidasEnemigo--
+      spanVidasEnemigo.innerHTML = vidasEnemigo
+    } else if ( ataqueJugador[i] === 'AGUA' && ataqueEnemigo[i] === 'FUEGO' ) { 
+      indexAmbosOponentes(i, i)
+      crearMensaje('GANASTE')
+      vidasEnemigo--
+      spanVidasEnemigo.innerHTML = vidasEnemigo
+    } else if ( ataqueJugador[i] === 'TIERRA' && ataqueEnemigo[i] === 'AGUA' ) { 
+      indexAmbosOponentes(i, i)
+      crearMensaje('GANASTE')
+      vidasEnemigo--
+      spanVidasEnemigo.innerHTML = vidasEnemigo
+    } else { 
+      indexAmbosOponentes(i, i)
+      crearMensaje('PERDISTE')
+      vidasJugador--
+      spanVidasJugador.innerHTML = vidasJugador
     }
-    
   }
-  
   revisarVidas()
+  
 }
 
 // Revisar las vidas de los jugadores y enviar el mensaje final. 
