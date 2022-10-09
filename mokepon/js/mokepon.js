@@ -15,6 +15,7 @@ let indexAtaqueEnemigo
 let victoriasJugador = 0
 let victoriasEnemigo = 0
 let ataquesMokeponEnemigo = []
+let intervalo
 
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
@@ -59,6 +60,8 @@ class Mokepon {
     this.alto = 80
     this.mapaFoto = new Image()
     this.mapaFoto.src = foto
+    this.velocidadX = 0
+    this.velocidadY = 0
   }
 }
 
@@ -128,6 +131,9 @@ const iniciarJuego = () => {
 // Seleccionando la mascota del jugador
 
 const seleccionarMascotaJugador = () => { 
+  
+  sectionVerMapa.style.display = 'flex'
+  intervalo =setInterval(pintarPersonaje, 50)  // ? funcionEjecutar, tiempoDeIntervalo
 
   if ( inputHipodoge.checked ) { 
     spanMascotaJugador.innerHTML = inputHipodoge.id  // el id se asigna en la linea '84' 
@@ -147,7 +153,6 @@ const seleccionarMascotaJugador = () => {
 
   extraerAtaques(mascotaJugador)
   seleccionarMascotaEnemigo()
-  sectionVerMapa.style.display = 'flex'
 }
 
 const extraerAtaques = (mascotaJugador) => { 
@@ -332,6 +337,8 @@ const aleatorio = (min, max) => {
 }
 
 const pintarPersonaje = () => {
+  capipepo.x = capipepo.x + capipepo.velocidadX
+  capipepo.y = capipepo.y + capipepo.velocidadY
   lienzo.clearRect(0, 0, mapa.width, mapa.height)
   lienzo.drawImage(
     capipepo.mapaFoto,
@@ -342,9 +349,25 @@ const pintarPersonaje = () => {
   )
 }
 
-const moverCapipepo = () => { 
-  capipepo.x = capipepo.x + 5
-  pintarPersonaje()
+const moverDerecha = () => { 
+  capipepo.velocidadX = 5
+}
+
+const moverIzquierda = () => { 
+  capipepo.velocidadX = -5
+}
+
+const moverAbajo = () => { 
+  capipepo.velocidadY = 5
+}
+
+const moverArriba = () => { 
+  capipepo.velocidadY = -5
+}
+
+const detenerMovimiento = () => { 
+  capipepo.velocidadX = 0
+  capipepo.velocidadY = 0
 }
 
 window.addEventListener('load', iniciarJuego)  // ? Asi podemos escuchar cuando el documento de Html este por completo cargado y ejecutar el JS 
