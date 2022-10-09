@@ -53,6 +53,12 @@ class Mokepon {
     this.foto = foto
     this.vida = vida
     this.ataques = []
+    this.x = 20
+    this.y = 30
+    this.ancho = 80
+    this.alto = 80
+    this.mapaFoto = new Image()
+    this.mapaFoto.src = foto
   }
 }
 
@@ -142,18 +148,6 @@ const seleccionarMascotaJugador = () => {
   extraerAtaques(mascotaJugador)
   seleccionarMascotaEnemigo()
   sectionVerMapa.style.display = 'flex'
-
-  // creando la variable de la imagen de capipepo para el canvas
-
-  let imagenDeCapipepo = new Image()
-  imagenDeCapipepo.src = capipepo.foto
-  lienzo.drawImage(
-    imagenDeCapipepo,
-    20,  // posicion en X
-    40,  // posicion en y
-    100,  // Alto de imagen
-    100  // Ancho de imagen
-  )
 }
 
 const extraerAtaques = (mascotaJugador) => { 
@@ -335,6 +329,22 @@ const reiniciarJuego = () => {
 
 const aleatorio = (min, max) => { 
   return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+const pintarPersonaje = () => {
+  lienzo.clearRect(0, 0, mapa.width, mapa.height)
+  lienzo.drawImage(
+    capipepo.mapaFoto,
+    capipepo.x,  // posicion en X
+    capipepo.y,  // posicion en y
+    capipepo.ancho,  // Alto de imagen
+    capipepo.alto  // Ancho de imagen
+  )
+}
+
+const moverCapipepo = () => { 
+  capipepo.x = capipepo.x + 5
+  pintarPersonaje()
 }
 
 window.addEventListener('load', iniciarJuego)  // ? Asi podemos escuchar cuando el documento de Html este por completo cargado y ejecutar el JS 
