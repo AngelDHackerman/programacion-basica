@@ -133,7 +133,8 @@ const iniciarJuego = () => {
 const seleccionarMascotaJugador = () => { 
   
   sectionVerMapa.style.display = 'flex'
-  intervalo =setInterval(pintarPersonaje, 50)  // ? funcionEjecutar, tiempoDeIntervalo
+
+  iniciarMapa()
 
   if ( inputHipodoge.checked ) { 
     spanMascotaJugador.innerHTML = inputHipodoge.id  // el id se asigna en la linea '84' 
@@ -368,6 +369,31 @@ const moverArriba = () => {
 const detenerMovimiento = () => { 
   capipepo.velocidadX = 0
   capipepo.velocidadY = 0
+}
+
+const sePresionoUnaTecla = (event) => { 
+  
+  switch (event.key) {  // event.key dice que tecla fue presionada.
+    case 'ArrowUp':
+      moverArriba()
+      break
+    case 'ArrowDown':
+      moverAbajo()
+      break
+    case 'ArrowLeft':
+      moverIzquierda()
+      break
+    case 'ArrowRight':
+      moverDerecha()
+    default:
+      break
+  }
+}
+
+const iniciarMapa = () => {
+  intervalo =setInterval(pintarPersonaje, 50)  // ? funcionEjecutar, tiempoDeIntervalo
+  window.addEventListener('keydown', sePresionoUnaTecla)  // ? keydown, dectecta que tecla ha sido presionada
+  window.addEventListener('keyup', detenerMovimiento)
 }
 
 window.addEventListener('load', iniciarJuego)  // ? Asi podemos escuchar cuando el documento de Html este por completo cargado y ejecutar el JS 
