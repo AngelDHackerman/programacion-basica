@@ -8,6 +8,7 @@ let botonFuego
 let botonAgua
 let botonTierra
 let mascotaJugador
+let mascotaJugadorObjeto
 let ataquesMokepon
 let botones = []
 let indexAtaqueJugador
@@ -133,10 +134,6 @@ const iniciarJuego = () => {
 // Seleccionando la mascota del jugador
 
 const seleccionarMascotaJugador = () => { 
-  
-  sectionVerMapa.style.display = 'flex'
-
-  iniciarMapa()
 
   if ( inputHipodoge.checked ) { 
     spanMascotaJugador.innerHTML = inputHipodoge.id  // el id se asigna en la linea '84' 
@@ -155,6 +152,8 @@ const seleccionarMascotaJugador = () => {
   }
 
   extraerAtaques(mascotaJugador)
+  sectionVerMapa.style.display = 'flex'
+  iniciarMapa()
   seleccionarMascotaEnemigo()
 }
 
@@ -340,8 +339,9 @@ const aleatorio = (min, max) => {
 }
 
 const pintarCanvas = () => {
-  capipepo.x = capipepo.x + capipepo.velocidadX
-  capipepo.y = capipepo.y + capipepo.velocidadY
+
+  mascotaJugadorObjeto.x = mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX
+  mascotaJugadorObjeto.y = mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY
   lienzo.clearRect(0, 0, mapa.width, mapa.height)  // Elimina los contenidos que estaban antes para dejar limpio el canvas
   lienzo.drawImage(
     mapaBackground,  // aqui le decimos que quieremos que dibuje en el canvas
@@ -352,33 +352,34 @@ const pintarCanvas = () => {
   )
 
   lienzo.drawImage(
-    capipepo.mapaFoto,
-    capipepo.x,  // posicion en X
-    capipepo.y,  // posicion en y
-    capipepo.ancho,  // Alto de imagen
-    capipepo.alto  // Ancho de imagen
+    mascotaJugadorObjeto.mapaFoto,
+    mascotaJugadorObjeto.x,  // posicion en X
+    mascotaJugadorObjeto.y,  // posicion en y
+    mascotaJugadorObjeto.ancho,  // Alto de imagen
+    mascotaJugadorObjeto.alto  // Ancho de imagen
   )
 }
 
+
 const moverDerecha = () => { 
-  capipepo.velocidadX = 5
+  mascotaJugadorObjeto.velocidadX = 5
 }
 
 const moverIzquierda = () => { 
-  capipepo.velocidadX = -5
+  mascotaJugadorObjeto.velocidadX = -5
 }
 
 const moverAbajo = () => { 
-  capipepo.velocidadY = 5
+  mascotaJugadorObjeto.velocidadY = 5
 }
 
 const moverArriba = () => { 
-  capipepo.velocidadY = -5
+  mascotaJugadorObjeto.velocidadY = -5
 }
 
 const detenerMovimiento = () => { 
-  capipepo.velocidadX = 0
-  capipepo.velocidadY = 0
+  mascotaJugadorObjeto.velocidadX = 0
+  mascotaJugadorObjeto.velocidadY = 0
 }
 
 const sePresionoUnaTecla = (event) => { 
@@ -402,12 +403,20 @@ const sePresionoUnaTecla = (event) => {
 
 const iniciarMapa = () => {
 
-  mapa.width = 800
-  mapa.height = 600
-
+  mapa.width = 600
+  mapa.height = 400
+  mascotaJugadorObjeto = obtenerObjetoMascota()
   intervalo =setInterval(pintarCanvas, 50)  // ? funcionEjecutar, tiempoDeIntervalo
   window.addEventListener('keydown', sePresionoUnaTecla)  // ? keydown, dectecta que tecla ha sido presionada
   window.addEventListener('keyup', detenerMovimiento)
+}
+
+const obtenerObjetoMascota = () => { 
+  for (let i = 0; i < mokepones.length; i++) {
+    if ( mascotaJugador == mokepones[i].nombre ) { 
+      return mokepones[i]
+    }
+  }
 }
 
 window.addEventListener('load', iniciarJuego)  // ? Asi podemos escuchar cuando el documento de Html este por completo cargado y ejecutar el JS 
