@@ -16,6 +16,8 @@ let victoriasJugador = 0
 let victoriasEnemigo = 0
 let ataquesMokeponEnemigo = []
 let intervalo
+let mapaBackground = new Image()
+mapaBackground.src = './assets/mokemap.webp'
 
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
@@ -337,10 +339,18 @@ const aleatorio = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-const pintarPersonaje = () => {
+const pintarCanvas = () => {
   capipepo.x = capipepo.x + capipepo.velocidadX
   capipepo.y = capipepo.y + capipepo.velocidadY
-  lienzo.clearRect(0, 0, mapa.width, mapa.height)
+  lienzo.clearRect(0, 0, mapa.width, mapa.height)  // Elimina los contenidos que estaban antes para dejar limpio el canvas
+  lienzo.drawImage(
+    mapaBackground,  // aqui le decimos que quieremos que dibuje en el canvas
+    0,  // posicion x
+    0,  // posicion y
+    mapa.width,  // con esto cubre el total de nuestro canvas (800 * 600)
+    mapa.height,
+  )
+
   lienzo.drawImage(
     capipepo.mapaFoto,
     capipepo.x,  // posicion en X
@@ -391,7 +401,11 @@ const sePresionoUnaTecla = (event) => {
 }
 
 const iniciarMapa = () => {
-  intervalo =setInterval(pintarPersonaje, 50)  // ? funcionEjecutar, tiempoDeIntervalo
+
+  mapa.width = 800
+  mapa.height = 600
+
+  intervalo =setInterval(pintarCanvas, 50)  // ? funcionEjecutar, tiempoDeIntervalo
   window.addEventListener('keydown', sePresionoUnaTecla)  // ? keydown, dectecta que tecla ha sido presionada
   window.addEventListener('keyup', detenerMovimiento)
 }
