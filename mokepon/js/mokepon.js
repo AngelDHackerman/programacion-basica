@@ -372,7 +372,11 @@ const pintarCanvas = () => {
 
   // Aqui verificamos si nuestra mascota "tiene velocidad" osea se esta moviendo
 
-  
+  if ( mascotaJugadorObjeto.velocidadX !== 0 || mascotaJugadorObjeto.velocidadY !== 0 ) { 
+    revisarColision(hipodogeEnemigo)
+    revisarColision(capipepoEnemigo)
+    revisarColision(ratigueyaEnemigo)
+  }
 }
 
 
@@ -455,7 +459,8 @@ const revisarColision = (enemigo) => {
     return
   }
 
-  alert('Hay colision')
+  detenerMovimiento()
+  alert(`Hay colicion con ${enemigo.nombre}`)
 }
 
 window.addEventListener('load', iniciarJuego)  // ? Asi podemos escuchar cuando el documento de Html este por completo cargado y ejecutar el JS 
