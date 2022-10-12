@@ -369,6 +369,10 @@ const pintarCanvas = () => {
   hipodogeEnemigo.pintarMokepon()
   capipepoEnemigo.pintarMokepon()
   ratigueyaEnemigo.pintarMokepon()
+
+  // Aqui verificamos si nuestra mascota "tiene velocidad" osea se esta moviendo
+
+  
 }
 
 
@@ -428,6 +432,30 @@ const obtenerObjetoMascota = () => {
       return mokepones[i]
     }
   }
+}
+
+const revisarColision = (enemigo) => { 
+
+  const arribaEnemigo = enemigo.y
+  const abajoEnemigo = enemigo.y + enemigo.alto
+  const derechaEnemigo = enemigo.x + enemigo.ancho
+  const izquierdaEnemigo = enemigo.x
+
+  const arribaMascota = mascotaJugadorObjeto.y
+  const abajoMascota = mascotaJugadorObjeto.y + mascotaJugadorObjeto.alto
+  const derechaMascota = mascotaJugadorObjeto.x + mascotaJugadorObjeto.ancho
+  const izquierdaMascota = mascotaJugadorObjeto.x
+
+  if (
+    abajoMascota < arribaEnemigo || 
+    arribaMascota > abajoEnemigo || 
+    derechaMascota < izquierdaEnemigo || 
+    izquierdaMascota > derechaEnemigo
+  ) { 
+    return
+  }
+
+  alert('Hay colision')
 }
 
 window.addEventListener('load', iniciarJuego)  // ? Asi podemos escuchar cuando el documento de Html este por completo cargado y ejecutar el JS 
