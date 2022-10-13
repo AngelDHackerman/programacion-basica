@@ -20,6 +20,12 @@ let intervalo
 let mapaBackground = new Image()
 mapaBackground.src = './assets/mokemap.webp'
 
+// Funcion para la aleatoriedad
+
+const aleatorio = (min, max) => { 
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 // Creando las dimensiones del mapa
 
 let alturaQueBuscamos 
@@ -31,7 +37,6 @@ if ( anchoDelMapa > anchoMaximoDelMapa ) {
 }
 
 alturaQueBuscamos = anchoDelMapa * 600 / 800
-
 
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
@@ -64,16 +69,19 @@ let inputHipodoge
 let inputCapipepo 
 let inputRatigueya
 
+mapa.width = anchoDelMapa
+mapa.height = alturaQueBuscamos
+
 class Mokepon { 
   constructor ( nombre, foto, vida, fotoMapa, x = 10, y = 10 ) { 
     this.nombre = nombre
     this.foto = foto
     this.vida = vida
     this.ataques = []
-    this.x = x
-    this.y = y
     this.ancho = 40
     this.alto = 40
+    this.x = aleatorio(0, mapa.width - this.ancho)
+    this.y =  aleatorio( 0, mapa.height - this.alto)
     this.mapaFoto = new Image()
     this.mapaFoto.src = fotoMapa
     this.velocidadX = 0
@@ -382,11 +390,6 @@ const reiniciarJuego = () => {
   window.location.reload()
 }
 
-// Funcion para la aleatoriedad
-
-const aleatorio = (min, max) => { 
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
 
 const pintarCanvas = () => {
 
@@ -397,7 +400,7 @@ const pintarCanvas = () => {
     mapaBackground,  // aqui le decimos que quieremos que dibuje en el canvas
     0,  // posicion x
     0,  // posicion y
-    mapa.width,  // con esto cubre el total de nuestro canvas (800 * 600)
+    mapa.width,  
     mapa.height,
   )
 
@@ -457,9 +460,6 @@ const sePresionoUnaTecla = (event) => {
 }
 
 const iniciarMapa = () => {
-
-  mapa.width = anchoDelMapa
-  mapa.height = alturaQueBuscamos
   
   mascotaJugadorObjeto = obtenerObjetoMascota()
   intervalo =setInterval(pintarCanvas, 50)  // ? funcionEjecutar, tiempoDeIntervalo
