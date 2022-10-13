@@ -122,7 +122,7 @@ input:checked + label {  /* "+" va a seleccionar los hermanos proximos en el HTM
 }
 
 #mapa { 
-  border: 2px solid white;
+  /* border: 2px solid white; */
   border-radius: 10px;
 }
 

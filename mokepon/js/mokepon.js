@@ -20,6 +20,19 @@ let intervalo
 let mapaBackground = new Image()
 mapaBackground.src = './assets/mokemap.webp'
 
+// Creando las dimensiones del mapa
+
+let alturaQueBuscamos 
+let anchoDelMapa = window.innerWidth - 20 // InnerWidth nos da el ancho actual de nuestra pantalla. 
+const anchoMaximoDelMapa = 350
+
+if ( anchoDelMapa > anchoMaximoDelMapa ) { 
+  anchoDelMapa = anchoMaximoDelMapa - 20 
+}
+
+alturaQueBuscamos = anchoDelMapa * 600 / 800
+
+
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
 
@@ -445,8 +458,9 @@ const sePresionoUnaTecla = (event) => {
 
 const iniciarMapa = () => {
 
-  mapa.width = 600
-  mapa.height = 400
+  mapa.width = anchoDelMapa
+  mapa.height = alturaQueBuscamos
+  
   mascotaJugadorObjeto = obtenerObjetoMascota()
   intervalo =setInterval(pintarCanvas, 50)  // ? funcionEjecutar, tiempoDeIntervalo
   window.addEventListener('keydown', sePresionoUnaTecla)  // ? keydown, dectecta que tecla ha sido presionada
