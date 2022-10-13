@@ -98,6 +98,14 @@ hipodoge.ataques.push(
   {nombre: '🌱', id: 'boton-tierra'},
 )
 
+hipodogeEnemigo.ataques.push( 
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🌱', id: 'boton-tierra'},
+)
+
 capipepo.ataques.push( 
   {nombre: '🌱', id: 'boton-tierra'},
   {nombre: '🌱', id: 'boton-tierra'},
@@ -106,7 +114,23 @@ capipepo.ataques.push(
   {nombre: '🔥', id: 'boton-fuego'},
 )
 
+capipepoEnemigo.ataques.push( 
+  {nombre: '🌱', id: 'boton-tierra'},
+  {nombre: '🌱', id: 'boton-tierra'},
+  {nombre: '🌱', id: 'boton-tierra'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '🔥', id: 'boton-fuego'},
+)
+
 ratigueya.ataques.push( 
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '🌱', id: 'boton-tierra'},
+)
+
+ratigueyaEnemigo.ataques.push( 
   {nombre: '🔥', id: 'boton-fuego'},
   {nombre: '🔥', id: 'boton-fuego'},
   {nombre: '🔥', id: 'boton-fuego'},
@@ -168,7 +192,6 @@ const seleccionarMascotaJugador = () => {
   extraerAtaques(mascotaJugador)
   sectionVerMapa.style.display = 'flex'
   iniciarMapa()
-  seleccionarMascotaEnemigo()
 }
 
 const extraerAtaques = (mascotaJugador) => { 
@@ -224,18 +247,18 @@ const ocultarSeccionMascotas = () => {
 
 // Seleccionando la mascota del enemigo
 
-const seleccionarMascotaEnemigo = () => { 
-  let mascotaAleatorio = aleatorio(0, mokepones.length - 1 )  // Esto debe comenzar en 0 porque el primer indice del array es 0, tambien -1 para evitar darle un indice extra al array.
+const seleccionarMascotaEnemigo = (enemigo) => { 
+  // let mascotaAleatorio = aleatorio(0, mokepones.length - 1 )  // Esto debe comenzar en 0 porque el primer indice del array es 0, tambien -1 para evitar darle un indice extra al array.
 
-  spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
-  ataquesMokeponEnemigo = mokepones[mascotaAleatorio].ataques
+  spanMascotaEnemigo.innerHTML = enemigo.nombre
+  ataquesMokeponEnemigo = enemigo.ataques
   secuenciaAtaque()
 }
 
 // Seleccionando aleatoriamente el Ataque del enemigo
 
 const ataqueAleatorioEnemigo = () => { 
-  let ataqueAleatorio = aleatorio( 0, ataquesMokeponEnemigo.length - 1 )
+  let ataqueAleatorio = aleatorio( 0, 5 - 1 )
 
   if ( ataqueAleatorio == 0 || ataqueAleatorio == 1 ) { 
     ataqueEnemigo.push('FUEGO')
@@ -460,7 +483,11 @@ const revisarColision = (enemigo) => {
   }
 
   detenerMovimiento()
-  alert(`Hay colicion con ${enemigo.nombre}`)
+  clearInterval(intervalo)  // Esto detiene el intervalo que pinta a el mapa.
+  seccionAtaque.style.display = 'flex'  // Esto mostrara la seccion de combate entre mokepones
+  sectionVerMapa.style.display = 'none'  // Esto esconde el mapa donde se genero la colicion
+  seleccionarMascotaEnemigo(enemigo)
+  // alert(`Hay colicion con ${enemigo.nombre}`)
 }
 
 window.addEventListener('load', iniciarJuego)  // ? Asi podemos escuchar cuando el documento de Html este por completo cargado y ejecutar el JS 
