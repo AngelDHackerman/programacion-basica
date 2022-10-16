@@ -188,6 +188,22 @@ const iniciarJuego = () => {
   sectionVerMapa.style.display = 'none'
   botonReiniciar.disabled = true
   botonReiniciar.addEventListener('click', reiniciarJuego)
+
+  // Esto de abajo, es parte del backend
+
+  unirseAlJuego()
+}
+
+const unirseAlJuego = () => { 
+  fetch('http://localhost:8080/unirse')  // esto hara una peticion de tipo "GET" a la URL que le pasamos por parametro
+    .then((res) => {  // ? una vez recibida la respuesta del "fetch", quedara metida en el parametro de ".then"
+      if (res.ok) {  // si el estatus de la respuesta esta 'ok' entonces:
+        res.text()  // nos permite usar un texto plano con el ID que trae la respuesta. 
+        .then((respuesta) => { // ? en el cuerpo de esta funcion vamos a poder usar la variable 'respuesta'
+          console.log(respuesta)
+        })
+      }
+    })
 }
 
 // Seleccionando la mascota del jugador
