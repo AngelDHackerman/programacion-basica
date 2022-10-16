@@ -14,6 +14,16 @@ class Jugador {
   constructor(id) { 
     this.id = id
   }
+
+  asignarMokepon(mokepon) {  // este es un metodo de la clase jugador que nos permitira asignar un mokepon
+    this.mokepon = mokepon
+  }
+}
+
+class Mokepon { 
+  constructor(nombre) { 
+    this.nombre = nombre
+  }
 }
 
 app.get('/unirse', (req, res) => { 
@@ -31,6 +41,14 @@ app.get('/unirse', (req, res) => {
 
 app.post('/mokepon/:jugadorId', (req, res) => { 
   const jugadorId = req.params.jugadorId || ""  // asi es como accedemos a la variable que se envio en la url, que esta en la peticion de post
+  const nombre = req.body.mokepon || ""
+  const mokepon = new Mokepon(nombre)
+
+  const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)  // aqui verificamos si el jugador ya existe en nuestra lista de jugadores
+  if (jugadorIndex >= 0) { 
+    jugadores[jugadorIndex].asignarMokepon(mokepon)
+  }
+
   console.log(jugadores)
   console.log(jugadorId)
   res.end()

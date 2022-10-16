@@ -1,4 +1,3 @@
-
 let ataqueEnemigo = []
 let ataqueJugador = []
 let vidasJugador = 3
@@ -40,22 +39,19 @@ alturaQueBuscamos = anchoDelMapa * 600 / 800
 
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
-
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
-
 const botonMascotaJugador = document.getElementById('boton-mascota');
-
 const seccionMascota = document.getElementById('seleccionar-mascota')
 const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
 const seccionAtaque = document.getElementById('seleccionar-ataque')
 const botonReiniciar = document.getElementById('boton-reiniciar')
 const contenedorAtaques = document.getElementById('contenedor-ataques')
-
 const spanVidasJugador = document.getElementById('vidas-jugador')
 const spanVidasEnemigo = document.getElementById('vidas-enemigo')
-
 const sectionResultado = document.getElementById('resultado')
+
+let jugadorId = null  // parte del backend
 
 // Agregando el canvas (debe ser agregado aqui, no antes)
 
@@ -201,6 +197,7 @@ const unirseAlJuego = () => {
         res.text()  // nos permite usar un texto plano con el ID que trae la respuesta. 
         .then((respuesta) => { // ? en el cuerpo de esta funcion vamos a poder usar la variable 'respuesta'
           console.log(respuesta)
+          jugadorId = respuesta
         })
       }
     })
