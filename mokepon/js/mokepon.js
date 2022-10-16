@@ -206,8 +206,6 @@ const unirseAlJuego = () => {
     })
 }
 
-// Seleccionando la mascota del jugador
-
 const seleccionarMascotaJugador = () => { 
 
   if ( inputHipodoge.checked ) { 
@@ -226,9 +224,23 @@ const seleccionarMascotaJugador = () => {
     alert('Selecciona una mascota para poder continuar! 🙃')
   }
 
+  seleccionarMokepon(mascotaJugador) // parte del backend
+
   extraerAtaques(mascotaJugador)
   sectionVerMapa.style.display = 'flex'
   iniciarMapa()
+}
+
+const seleccionarMokepon = (mascotaJugador) => { 
+  fetch(`http://localhost:8080/mokepon/${jugadorId}`, { 
+    method: 'POST',  // asi se agrega un header para que la peticion sea de tipo post
+    headers: {
+      "Content-Type": "application/json;charset=utf-8"
+    },
+    body: JSON.stringify({
+      mokepon: mascotaJugador
+    })
+  })
 }
 
 const extraerAtaques = (mascotaJugador) => { 
