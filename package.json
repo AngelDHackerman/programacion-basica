@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/AngelDHackerman/programacion-basica/issues"
   },
-  "homepage": "https://github.com/AngelDHackerman/programacion-basica#readme"
+  "homepage": "https://github.com/AngelDHackerman/programacion-basica#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
