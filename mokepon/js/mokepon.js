@@ -138,29 +138,11 @@ capipepo.ataques.push(...CAPIPEPO_ATAQUES)
 ratigueya.ataques.push(...RATIGUEYA_ATAQUES)
 
 
-hipodogeEnemigo.ataques.push( 
-  {nombre: '💧', id: 'boton-agua'},
-  {nombre: '💧', id: 'boton-agua'},
-  {nombre: '💧', id: 'boton-agua'},
-  {nombre: '🔥', id: 'boton-fuego'},
-  {nombre: '🌱', id: 'boton-tierra'},
-)
+hipodogeEnemigo.ataques.push(...HIPODOGE_ATAQUES)
 
-capipepoEnemigo.ataques.push( 
-  {nombre: '🌱', id: 'boton-tierra'},
-  {nombre: '🌱', id: 'boton-tierra'},
-  {nombre: '🌱', id: 'boton-tierra'},
-  {nombre: '💧', id: 'boton-agua'},
-  {nombre: '🔥', id: 'boton-fuego'},
-)
+capipepoEnemigo.ataques.push(...CAPIPEPO_ATAQUES)
 
-ratigueyaEnemigo.ataques.push( 
-  {nombre: '🔥', id: 'boton-fuego'},
-  {nombre: '🔥', id: 'boton-fuego'},
-  {nombre: '🔥', id: 'boton-fuego'},
-  {nombre: '💧', id: 'boton-agua'},
-  {nombre: '🌱', id: 'boton-tierra'},
-)
+ratigueyaEnemigo.ataques.push(...RATIGUEYA_ATAQUES)
 
 mokepones.push(hipodoge, capipepo, ratigueya)  // .push() agrega los elementos al array seleccionado.
 
