@@ -107,13 +107,36 @@ let ratigueyaEnemigo = new Mokepon('ratigueya', './assets/mokepons_mokepon_ratig
 
 // Agregando 5 ataques por cada mokepon
 
-hipodoge.ataques.push( 
+const HIPODOGE_ATAQUES = [
   {nombre: '💧', id: 'boton-agua'},
   {nombre: '💧', id: 'boton-agua'},
   {nombre: '💧', id: 'boton-agua'},
   {nombre: '🔥', id: 'boton-fuego'},
   {nombre: '🌱', id: 'boton-tierra'},
-)
+]
+
+const CAPIPEPO_ATAQUES = [
+  {nombre: '🌱', id: 'boton-tierra'},
+  {nombre: '🌱', id: 'boton-tierra'},
+  {nombre: '🌱', id: 'boton-tierra'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '🔥', id: 'boton-fuego'},
+]
+
+const RATIGUEYA_ATAQUES = [
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '🌱', id: 'boton-tierra'},
+]
+
+hipodoge.ataques.push(...HIPODOGE_ATAQUES)  // ? Usando el spread operator "..." pasamos los valores de los ataques tal cual y no una simple lista.
+
+capipepo.ataques.push(...CAPIPEPO_ATAQUES)
+
+ratigueya.ataques.push(...RATIGUEYA_ATAQUES)
+
 
 hipodogeEnemigo.ataques.push( 
   {nombre: '💧', id: 'boton-agua'},
@@ -123,28 +146,12 @@ hipodogeEnemigo.ataques.push(
   {nombre: '🌱', id: 'boton-tierra'},
 )
 
-capipepo.ataques.push( 
-  {nombre: '🌱', id: 'boton-tierra'},
-  {nombre: '🌱', id: 'boton-tierra'},
-  {nombre: '🌱', id: 'boton-tierra'},
-  {nombre: '💧', id: 'boton-agua'},
-  {nombre: '🔥', id: 'boton-fuego'},
-)
-
 capipepoEnemigo.ataques.push( 
   {nombre: '🌱', id: 'boton-tierra'},
   {nombre: '🌱', id: 'boton-tierra'},
   {nombre: '🌱', id: 'boton-tierra'},
   {nombre: '💧', id: 'boton-agua'},
   {nombre: '🔥', id: 'boton-fuego'},
-)
-
-ratigueya.ataques.push( 
-  {nombre: '🔥', id: 'boton-fuego'},
-  {nombre: '🔥', id: 'boton-fuego'},
-  {nombre: '🔥', id: 'boton-fuego'},
-  {nombre: '💧', id: 'boton-agua'},
-  {nombre: '🌱', id: 'boton-tierra'},
 )
 
 ratigueyaEnemigo.ataques.push( 
@@ -456,6 +463,14 @@ const enviarPosicion = (x, y) => {
       x,  // la misma x se usa para "clave" y "valor" en este ejemplo
       y
     })
+  })
+  .then((res) => { 
+    if ( res.ok ) { 
+      res.json()
+        .then(({ enemigos }) => {
+          console.log(enemigos)
+        })
+    }
   })
 }
 
