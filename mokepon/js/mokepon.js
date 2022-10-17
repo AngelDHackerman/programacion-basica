@@ -430,6 +430,9 @@ const pintarCanvas = () => {
   )
 
   mascotaJugadorObjeto.pintarMokepon()
+
+  enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y)  // parte del backend
+
   hipodogeEnemigo.pintarMokepon()
   capipepoEnemigo.pintarMokepon()
   ratigueyaEnemigo.pintarMokepon()
@@ -441,6 +444,19 @@ const pintarCanvas = () => {
     revisarColision(capipepoEnemigo)
     revisarColision(ratigueyaEnemigo)
   }
+}
+
+const enviarPosicion = (x, y) => { 
+  fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, { 
+    method: 'POST',  // asi se agrega un header para que la peticion sea de tipo post
+    headers: {
+      "Content-Type": "application/json;charset=utf-8"
+    },
+    body: JSON.stringify({
+      x,  // la misma x se usa para "clave" y "valor" en este ejemplo
+      y
+    })
+  })
 }
 
 
