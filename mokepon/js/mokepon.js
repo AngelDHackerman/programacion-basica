@@ -101,10 +101,6 @@ let hipodoge = new Mokepon('hipodoge', './assets/mokepons_mokepon_hipodoge_attac
 let capipepo = new Mokepon('capipepo', './assets/mokepons_mokepon_capipepo_attack.webp', 5, './assets/capipepo.webp')
 let ratigueya = new Mokepon('ratigueya', './assets/mokepons_mokepon_ratigueya_attack.webp', 5, './assets/ratigueya.webp')
 
-let hipodogeEnemigo = new Mokepon('hipodoge', './assets/mokepons_mokepon_hipodoge_attack.webp', 5, './assets/hipodoge.webp')
-let capipepoEnemigo = new Mokepon('capipepo', './assets/mokepons_mokepon_capipepo_attack.webp', 5, './assets/capipepo.webp')
-let ratigueyaEnemigo = new Mokepon('ratigueya', './assets/mokepons_mokepon_ratigueya_attack.webp', 5, './assets/ratigueya.webp')
-
 // Agregando 5 ataques por cada mokepon
 
 const HIPODOGE_ATAQUES = [
@@ -136,13 +132,6 @@ hipodoge.ataques.push(...HIPODOGE_ATAQUES)  // ? Usando el spread operator "..."
 capipepo.ataques.push(...CAPIPEPO_ATAQUES)
 
 ratigueya.ataques.push(...RATIGUEYA_ATAQUES)
-
-
-hipodogeEnemigo.ataques.push(...HIPODOGE_ATAQUES)
-
-capipepoEnemigo.ataques.push(...CAPIPEPO_ATAQUES)
-
-ratigueyaEnemigo.ataques.push(...RATIGUEYA_ATAQUES)
 
 mokepones.push(hipodoge, capipepo, ratigueya)  // .push() agrega los elementos al array seleccionado.
 
@@ -451,6 +440,9 @@ const enviarPosicion = (x, y) => {
       res.json()
         .then(({ enemigos }) => {
           console.log(enemigos)
+          let hipodogeEnemigo = new Mokepon('hipodoge', './assets/mokepons_mokepon_hipodoge_attack.webp', 5, './assets/hipodoge.webp')
+          let capipepoEnemigo = new Mokepon('capipepo', './assets/mokepons_mokepon_capipepo_attack.webp', 5, './assets/capipepo.webp')
+          let ratigueyaEnemigo = new Mokepon('ratigueya', './assets/mokepons_mokepon_ratigueya_attack.webp', 5, './assets/ratigueya.webp') 
         })
     }
   })
