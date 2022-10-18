@@ -440,9 +440,19 @@ const enviarPosicion = (x, y) => {
       res.json()
         .then(({ enemigos }) => {
           console.log(enemigos)
-          let hipodogeEnemigo = new Mokepon('hipodoge', './assets/mokepons_mokepon_hipodoge_attack.webp', 5, './assets/hipodoge.webp')
-          let capipepoEnemigo = new Mokepon('capipepo', './assets/mokepons_mokepon_capipepo_attack.webp', 5, './assets/capipepo.webp')
-          let ratigueyaEnemigo = new Mokepon('ratigueya', './assets/mokepons_mokepon_ratigueya_attack.webp', 5, './assets/ratigueya.webp') 
+          enemigos.forEach((enemigo) => { 
+            let mokeponenEnemigo = null
+            const mokeponNombre = enemigo.mokepon.nombre | ""
+            if ( mokeponNombre === 'hipodoge' ) { 
+              mokeponenEnemigo = new Mokepon('hipodoge', './assets/mokepons_mokepon_hipodoge_attack.webp', 5, './assets/hipodoge.webp')
+            } else if ( mokeponNombre === 'capipepo') { 
+              mokeponenEnemigo = new Mokepon('capipepo', './assets/mokepons_mokepon_capipepo_attack.webp', 5, './assets/capipepo.webp')
+            } else if ( mokeponNombre === 'ratigueya' ) { 
+              mokeponenEnemigo = new Mokepon('ratigueya', './assets/mokepons_mokepon_ratigueya_attack.webp', 5, './assets/ratigueya.webp') 
+            }
+
+            mokeponenEnemigo.pintarMokepon()
+          })
         })
     }
   })
