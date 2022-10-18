@@ -69,7 +69,8 @@ mapa.width = anchoDelMapa
 mapa.height = alturaQueBuscamos
 
 class Mokepon { 
-  constructor ( nombre, foto, vida, fotoMapa ) { 
+  constructor ( nombre, foto, vida, fotoMapa, id = null ) { 
+    this.id = id
     this.nombre = nombre
     this.foto = foto
     this.vida = vida
@@ -411,9 +412,9 @@ const pintarCanvas = () => {
 
   enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y)  // parte del backend
 
-  hipodogeEnemigo.pintarMokepon()
-  capipepoEnemigo.pintarMokepon()
-  ratigueyaEnemigo.pintarMokepon()
+  // hipodogeEnemigo.pintarMokepon()
+  // capipepoEnemigo.pintarMokepon()
+  // ratigueyaEnemigo.pintarMokepon()
 
   // Aqui verificamos si nuestra mascota "tiene velocidad" osea se esta moviendo
 
@@ -441,17 +442,20 @@ const enviarPosicion = (x, y) => {
         .then(({ enemigos }) => {
           console.log(enemigos)
           enemigos.forEach((enemigo) => { 
-            let mokeponenEnemigo = null
-            const mokeponNombre = enemigo.mokepon.nombre | ""
+            let mokeponEnemigo = null
+            const mokeponNombre = enemigo.mokepon.nombre || ""
             if ( mokeponNombre === 'hipodoge' ) { 
-              mokeponenEnemigo = new Mokepon('hipodoge', './assets/mokepons_mokepon_hipodoge_attack.webp', 5, './assets/hipodoge.webp')
+              mokeponEnemigo = new Mokepon('hipodoge', './assets/mokepons_mokepon_hipodoge_attack.webp', 5, './assets/hipodoge.webp')
             } else if ( mokeponNombre === 'capipepo') { 
-              mokeponenEnemigo = new Mokepon('capipepo', './assets/mokepons_mokepon_capipepo_attack.webp', 5, './assets/capipepo.webp')
+              mokeponEnemigo = new Mokepon('capipepo', './assets/mokepons_mokepon_capipepo_attack.webp', 5, './assets/capipepo.webp')
             } else if ( mokeponNombre === 'ratigueya' ) { 
-              mokeponenEnemigo = new Mokepon('ratigueya', './assets/mokepons_mokepon_ratigueya_attack.webp', 5, './assets/ratigueya.webp') 
+              mokeponEnemigo = new Mokepon('ratigueya', './assets/mokepons_mokepon_ratigueya_attack.webp', 5, './assets/ratigueya.webp') 
             }
 
-            mokeponenEnemigo.pintarMokepon()
+            mokeponEnemigo.x = enemigo.x
+            mokeponEnemigo.y = enemigo.y
+            
+            mokeponEnemigo.pintarMokepon()
           })
         })
     }
