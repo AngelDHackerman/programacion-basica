@@ -60,6 +60,7 @@ let lienzo = mapa.getContext("2d")
 // Clase para crear mokepones
 
 let mokepones = []
+let mokeponesEnemigos = []
 
 let inputHipodoge 
 let inputCapipepo 
@@ -412,9 +413,9 @@ const pintarCanvas = () => {
 
   enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y)  // parte del backend
 
-  // hipodogeEnemigo.pintarMokepon()
-  // capipepoEnemigo.pintarMokepon()
-  // ratigueyaEnemigo.pintarMokepon()
+  mokeponesEnemigos.forEach((mokepon) => { 
+    mokepon.pintarMokepon()
+  })
 
   // Aqui verificamos si nuestra mascota "tiene velocidad" osea se esta moviendo
 
@@ -441,7 +442,7 @@ const enviarPosicion = (x, y) => {
       res.json()
         .then(({ enemigos }) => {
           console.log(enemigos)
-          enemigos.forEach((enemigo) => { 
+          mokeponesEnemigos = enemigos.map((enemigo) => { 
             let mokeponEnemigo = null
             const mokeponNombre = enemigo.mokepon.nombre || ""
             if ( mokeponNombre === 'hipodoge' ) { 
@@ -455,7 +456,7 @@ const enviarPosicion = (x, y) => {
             mokeponEnemigo.x = enemigo.x
             mokeponEnemigo.y = enemigo.y
             
-            mokeponEnemigo.pintarMokepon()
+            return mokeponEnemigo
           })
         })
     }
