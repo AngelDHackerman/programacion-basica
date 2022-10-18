@@ -23,6 +23,10 @@ class Jugador {
     this.x = x
     this.y = y
   }
+
+  asignarAtaques(ataques) {
+    this.ataques = ataques
+  }
 }
 
 class Mokepon { 
@@ -75,6 +79,18 @@ app.post('/mokepon/:jugadorId/posicion', (req, res) => {
   res.send({
     enemigos
   })
+})
+
+app.post('/mokepon/:jugadorId/ataques', (req, res) => { 
+  const jugadorId = req.params.jugadorId || ""  // asi es como accedemos a la variable que se envio en la url, que esta en la peticion de post
+  const ataques = req.body.ataques || []
+
+  const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)  // aqui verificamos si el jugador ya existe en nuestra lista de jugadores
+  if (jugadorIndex >= 0) { 
+    jugadores[jugadorIndex].asignarAtaques(ataques)
+  }
+
+  res.end()
 })
 
 app.listen(8080, () => { // Aqui le decimos que puerto debe escuchar nuestra aplicacion

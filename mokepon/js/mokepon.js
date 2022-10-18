@@ -260,7 +260,21 @@ const secuenciaAtaque = () => {
         boton.style.background = '#112f58'
         boton.disabled = true
       }
-      ataqueAleatorioEnemigo()
+      if ( ataqueJugador === 5 ) { 
+        enviarAtaques()
+      }
+    })
+  })
+}
+
+const enviarAtaques = () => { 
+  fetch(`http://localhost:8080/mokepon/${jugadorId}/ataques`, { 
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      ataques: ataqueJugador
     })
   })
 }
@@ -415,15 +429,8 @@ const pintarCanvas = () => {
 
   mokeponesEnemigos.forEach((mokepon) => { 
     mokepon.pintarMokepon()
+    revisarColision(mokepon)
   })
-
-  // Aqui verificamos si nuestra mascota "tiene velocidad" osea se esta moviendo
-
-  if ( mascotaJugadorObjeto.velocidadX !== 0 || mascotaJugadorObjeto.velocidadY !== 0 ) { 
-    revisarColision(hipodogeEnemigo)
-    revisarColision(capipepoEnemigo)
-    revisarColision(ratigueyaEnemigo)
-  }
 }
 
 const enviarPosicion = (x, y) => { 
