@@ -1,3 +1,5 @@
+let jugadorId = null  // parte del backend
+let enemigoId = []
 let ataqueEnemigo = []
 let ataqueJugador = []
 let vidasJugador = 3
@@ -50,8 +52,6 @@ const contenedorAtaques = document.getElementById('contenedor-ataques')
 const spanVidasJugador = document.getElementById('vidas-jugador')
 const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 const sectionResultado = document.getElementById('resultado')
-
-let jugadorId = null  // parte del backend
 
 // Agregando el canvas (debe ser agregado aqui, no antes)
 
@@ -453,11 +453,11 @@ const enviarPosicion = (x, y) => {
             let mokeponEnemigo = null
             const mokeponNombre = enemigo.mokepon.nombre || ""
             if ( mokeponNombre === 'hipodoge' ) { 
-              mokeponEnemigo = new Mokepon('hipodoge', './assets/mokepons_mokepon_hipodoge_attack.webp', 5, './assets/hipodoge.webp')
+              mokeponEnemigo = new Mokepon('hipodoge', './assets/mokepons_mokepon_hipodoge_attack.webp', 5, './assets/hipodoge.webp', enemigo.id)
             } else if ( mokeponNombre === 'capipepo') { 
-              mokeponEnemigo = new Mokepon('capipepo', './assets/mokepons_mokepon_capipepo_attack.webp', 5, './assets/capipepo.webp')
+              mokeponEnemigo = new Mokepon('capipepo', './assets/mokepons_mokepon_capipepo_attack.webp', 5, './assets/capipepo.webp', enemigo.id)
             } else if ( mokeponNombre === 'ratigueya' ) { 
-              mokeponEnemigo = new Mokepon('ratigueya', './assets/mokepons_mokepon_ratigueya_attack.webp', 5, './assets/ratigueya.webp') 
+              mokeponEnemigo = new Mokepon('ratigueya', './assets/mokepons_mokepon_ratigueya_attack.webp', 5, './assets/ratigueya.webp', enemigo.id) 
             }
 
             mokeponEnemigo.x = enemigo.x
@@ -550,6 +550,9 @@ const revisarColision = (enemigo) => {
 
   detenerMovimiento()
   clearInterval(intervalo)  // Esto detiene el intervalo que pinta a el mapa.
+  console.log('Se detecto una colision')
+
+  enemigoId = enemigo.id
   seccionAtaque.style.display = 'flex'  // Esto mostrara la seccion de combate entre mokepones
   sectionVerMapa.style.display = 'none'  // Esto esconde el mapa donde se genero la colicion
   seleccionarMascotaEnemigo(enemigo)
