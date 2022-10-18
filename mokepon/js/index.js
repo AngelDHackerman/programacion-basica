@@ -93,6 +93,15 @@ app.post('/mokepon/:jugadorId/ataques', (req, res) => {
   res.end()
 })
 
+app.get('/mokepon/:jugadoreId/ataques', (req, res) => { 
+  const jugadorId = req.params.jugadoreId || ""
+  const jugador = jugadores.find((jugador) => jugador.id === jugadorId)
+
+  res.send({
+    ataques: jugador.ataques
+  })
+})
+
 app.listen(8080, () => { // Aqui le decimos que puerto debe escuchar nuestra aplicacion
   console.log('Servidor funcionando')
 })

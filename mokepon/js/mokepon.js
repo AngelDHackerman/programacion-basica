@@ -277,6 +277,23 @@ const enviarAtaques = () => {
       ataques: ataqueJugador
     })
   })
+
+  intervalo = setInterval(obtenerAtaques, 50)
+}
+
+const obtenerAtaques = () => { 
+  fetch(`http://localhost:8080/mokepon/${enemigoId}/ataques`)
+    .then((res) => { 
+      if (res.ok) { 
+        res.json()
+          .then(({ ataques }) => {
+            if ( ataques.length === 5 ) {
+              ataqueEnemigo = ataques
+              combate()
+            }
+          })
+      }
+    })
 }
 
 const ocultarSeccionMascotas = () => {
@@ -324,6 +341,7 @@ const indexAmbosOponentes = ( jugador, enemigo ) => {
 }
 
 const combate = () => {
+  clearInterval(intervalo)
 
   for (let i = 0; i < ataqueJugador.length; i++) {
     if(ataqueJugador[i] === ataqueEnemigo[i]) { 
